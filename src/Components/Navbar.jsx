@@ -3,8 +3,8 @@ import logo from "../assets/images/logo.png";
 
 const Navbar = () => {
   return (
-    <div>
-      <div className="flex flex-col gap-4 lg:gap-4 lg:flex-row justify-between items-center w-[90%] mx-auto bg-[#5e27cd48] shadow-xl pb-8 lg:pb-0  px-2">
+    <div >
+      <div className="flex flex-col gap-4 lg:gap-4 lg:flex-row justify-between items-center w-[90%]  mx-auto bg-purple-300 shadow-xl pb-8 lg:pb-0  px-2 ">
         <div className="flex items-center">
           <img className="w-20 py-2" src={logo} alt="" />
           <h1 className="font-bold text-2xl">
