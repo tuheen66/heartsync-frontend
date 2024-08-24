@@ -1,9 +1,59 @@
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProviders";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+    .then((result) => {
+      console.log(result.user);
+      Swal.fire({
+        title: "success!",
+        text: "You have been registered successfully",
+        icon: "success",
+        confirmButtonText: "Cool",
+      });
+
+      updateProfile(result.user, {
+        displayName: name,
+        photoURL: photo,
+      })
+        .then(() => console.log("Profile updated"))
+        .catch((error) => {
+          console.error(error);
+        });
+
+      location.reload();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
+  e.target.reset();
+
+
+
+  }
+
     return (
         <div className=" w-[80%] mx-auto items-center justify-center">
       <Helmet>
@@ -13,7 +63,7 @@ const Register = () => {
         <h2 className="text-center text-3xl font-bold">Please Register</h2>
 
         <form 
-        // onSubmit={handleRegister} 
+        onSubmit={handleRegister} 
         className="form-action">
           <div className="w-full">
             <label className="pl-4 " htmlFor="name">
@@ -60,17 +110,17 @@ const Register = () => {
             </label>
             <input
               className="bg-gray-200 py-2 px-4 w-full mb-2 rounded-lg border-2 border-gray-400"
-            //   type={showPassword ? "text" : "password"}
+            type={showPassword ? "text" : "password"}
               placeholder="Password"
               name="password"
               id="password"
             />
-            {/* <span
-            //   onClick={() => setShowPassword(!showPassword)}
+             <span
+              onClick={() => setShowPassword(!showPassword)}
               className="absolute right-2 top-9"
             >
               {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-            </span> */}
+            </span>
           </div>
 
           <input

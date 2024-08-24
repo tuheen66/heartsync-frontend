@@ -1,8 +1,35 @@
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
+  };
+
   return (
     <div className="flex w-[80%] mx-auto items-center ">
       <Helmet>
@@ -11,10 +38,7 @@ const Login = () => {
       <div className=" lg:w-[50%] bg-purple-200 p-8  mx-auto text-gray-700 my-8 rounded-lg">
         <h2 className="text-center text-3xl font-bold">Please Login</h2>
 
-        <form
-          //  onSubmit={handleSignIn}
-          className="form-action"
-        >
+        <form onSubmit={handleSignIn} className="form-action">
           <div className="w-full">
             <label className="pl-4 " htmlFor="email">
               Your email:
@@ -34,17 +58,17 @@ const Login = () => {
             </label>
             <input
               className="bg-gray-200 py-2 px-4 w-full mb-2 rounded-lg border-2 border-gray-400"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               name="password"
               id="password"
             />
-            {/* <span
+            <span
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-2 top-9"
             >
               {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-            </span> */}
+            </span>
           </div>
 
           <input
@@ -56,12 +80,12 @@ const Login = () => {
 
         <div className="text-center mt-4 space-y-2">
           <p className="flex justify-center items-center">
-            Sign In with  
+            Sign In with
             <span
               //   onClick={handleGoogleSignIn}
               className="text-[#eb4d4b] font-bold mx-2 cursor-pointer hover:underline"
             >
-             <FaGoogle />
+              <FaGoogle />
             </span>
           </p>
           <p>
@@ -72,7 +96,6 @@ const Login = () => {
           </p>
         </div>
       </div>
-      
     </div>
   );
 };
