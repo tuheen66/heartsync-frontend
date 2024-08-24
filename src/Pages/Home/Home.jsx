@@ -1,8 +1,12 @@
 import Banner from "../../Components/Banner";
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   return (
     <div className="w-[90%] mx-auto">
+        <Helmet>
+        <title>Heartsync | Home</title>
+      </Helmet>
       <Banner></Banner>
       <section>
         <h2 className="text-3xl">Premium member profile cards</h2>
