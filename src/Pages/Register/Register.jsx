@@ -124,7 +124,7 @@ const Register = () => {
           </div>
 
           <input
-            className="btn  bg-[#a9106b] w-full border-none text-lg mt-6 text-white rounded-lg hover:bg-[#30336b] "
+            className="btn  bg-[#a9106b] py-2 w-full border-none text-lg mt-6 text-white rounded-lg hover:bg-[#30336b] "
             type="submit"
             value="Register"
           />

@@ -72,7 +72,7 @@ const Login = () => {
           </div>
 
           <input
-            className="btn bg-[#a9106b]  w-full border-none text-white text-lg mt-6 hover:bg-[#30336b] "
+            className=" bg-[#a9106b] py-2 rounded-lg w-full border-none text-white text-lg mt-6 hover:bg-[#30336b] "
             type="submit"
             value="Login"
           />

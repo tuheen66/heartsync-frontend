@@ -24,8 +24,8 @@ const Navbar = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/">Biodatas</NavLink>
             <NavLink to="/">About Us</NavLink>
-            <NavLink to="/">Contact Us</NavLink>
-            <NavLink to="/">Dashboard</NavLink>
+            <NavLink to="/contactUs">Contact Us</NavLink>
+            {user && <NavLink to="/">Dashboard</NavLink>}
           </div>
         </div>
 
@@ -49,7 +49,7 @@ const Navbar = () => {
 
                 <button
                   onClick={handleLogout}
-                  className="btn btn-sm lg:btn-md rounded-none border-none bg-[#a9106b] hover:bg-[#30336b] text-white"
+                  className="py-2 px-4 rounded-none border-none bg-[#a9106b] hover:bg-[#30336b] text-white"
                 >
                   Logout
                 </button>
@@ -57,7 +57,7 @@ const Navbar = () => {
             ) : (
               <div>
                 <Link to="/login">
-                  <button className="btn btn-sm lg:btn-md border-none rounded-none mr-2 bg-[#a9106b] hover:bg-[#30336b] text-white">
+                  <button className="px-4 py-2 border-none rounded-none mr-2 bg-[#a9106b] hover:bg-[#30336b] text-white">
                     Login
                   </button>
                 </Link>
