@@ -4,6 +4,8 @@ import Main from "../Layout/Main";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import Dashboard from './../Layout/Dashboard';
+import EditBiodata from "../Dashboard/EditBiodata";
 
 export const router = createBrowserRouter([
   {
@@ -28,4 +30,14 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:'dashboard',
+    element:<Dashboard></Dashboard>,
+    children:[
+      {
+        path:"editBiodata",
+        element:<EditBiodata></EditBiodata>
+      }
+    ]
+  }
 ]);
