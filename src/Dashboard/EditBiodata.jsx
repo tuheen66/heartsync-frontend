@@ -5,41 +5,94 @@ import "react-datepicker/dist/react-datepicker.css";
 const EditBiodata = () => {
   const [birthDate, setBirthDate] = useState(null);
 
+  const handleBiodata = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const gender = form.gender.value;
+    const birth_date = birthDate;
+    const height = form.height.value;
+    const weight = form.weight.value;
+    const partner_weight = form.partner_weight.value;
+    const partner_height = form.partner_height.value;
+    const age = form.age.value;
+    const partner_age = form.partner_age.value;
+    const occupation = form.occupation.value;
+    const race = form.race.value;
+    const father_name = form.fathers_name.value;
+    const mother_name = form.mothers_name.value;
+    const permanentDivision = form.permanentDivision.value;
+    const presentDivision = form.presentDivision.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+
+    const biodata = {
+      name,
+      photo,
+      gender,
+      birth_date,
+      height,
+      weight,
+      partner_height,
+      partner_weight,
+      age,
+      partner_age,
+      occupation,
+      race,
+      father_name,
+      mother_name,
+      permanentDivision,
+      presentDivision,
+      email,
+      phone,
+    };
+
+    console.log(biodata);
+  };
+
   return (
     <div>
-      <h2 className="text-4xl font-semibold text-center my-8">Create / Edit Biodata</h2>
+      <h2 className="text-4xl font-semibold text-center my-8">
+        Create / Edit Biodata
+      </h2>
       <div className="text-gray-600">
-        <form class="max-w-md mx-auto text-gray-600">
+        <form
+          onSubmit={handleBiodata}
+          className="max-w-md mx-auto text-gray-600 mb-12"
+        >
           {/* name */}
-          <div class="relative z-0 w-full mb-5 ">
+          <div className="relative z-0 w-full mb-5 ">
             <input
               type="text"
               name="name"
               id="name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
             <label
               for="name"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Your Name
             </label>
           </div>
           {/* photo url */}
-          <div class="relative z-0 w-full mb-5 ">
+          <div className="relative z-0 w-full mb-5 ">
             <input
               type="text"
               name="photo"
               id="photo"
-              class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
             <label
               for="photo"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Photo URL
             </label>
@@ -50,43 +103,46 @@ const EditBiodata = () => {
             <div>
               <label
                 for="gender"
-                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Select an option
               </label>
               <select
                 id="gender"
-                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="gender"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </select>
             </div>
+
             <div>
               <label className="text-gray-500">Date of Birth</label>
               <br />
               <DatePicker
-                className="border-2 border-gray-300 rounded-lg"
-                selected={birthDate}
                 showIcon
+                selected={birthDate}
                 onChange={(date) => setBirthDate(date)}
                 dateFormat="dd/MM/yyyy"
               />
             </div>
           </div>
+
           {/* heigh and weight */}
           <div className="grid grid-cols-2 gap-6 my-4 text-gray-500">
             <div>
               <label
                 for="height"
-                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Height
               </label>
               <select
                 id="height"
-                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="height"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Select</option>
                 <option value="5.0">5' 0"</option>
@@ -101,13 +157,14 @@ const EditBiodata = () => {
             <div>
               <label
                 for="weight"
-                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Weight
               </label>
               <select
                 id="weight"
-                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="weight"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Select</option>
                 <option value="50">45-50 kg</option>
@@ -130,13 +187,14 @@ const EditBiodata = () => {
             <div>
               <label
                 for="partner_height"
-                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Expected Partner's Height
               </label>
               <select
                 id="partner_height"
-                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="partner_height"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Select</option>
                 <option value="5.0">5' 0"</option>
@@ -151,13 +209,14 @@ const EditBiodata = () => {
             <div>
               <label
                 for="partner_weight"
-                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Expected Partner's Weight
               </label>
               <select
                 id="partner_weight"
-                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="partner_weight"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Select</option>
                 <option value="50">45-50 kg</option>
@@ -177,34 +236,34 @@ const EditBiodata = () => {
 
           {/* age */}
           <div className="grid grid-cols-2 gap-6">
-            <div class="relative z-0 w-full mb-5 ">
+            <div className="relative z-0 w-full mb-5 ">
               <input
                 type="number"
                 name="age"
                 id="age"
-                class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
               />
               <label
                 for="age"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Age
               </label>
             </div>
-            <div class="relative z-0 w-full mb-5 ">
+            <div className="relative z-0 w-full mb-5 ">
               <input
                 type="number"
                 name="partner_age"
                 id="partner_age"
-                class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
               />
               <label
                 for="partner_age"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Expected Partner Age
               </label>
@@ -217,13 +276,14 @@ const EditBiodata = () => {
             <div>
               <label
                 for="occupation"
-                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Occupation
               </label>
               <select
                 id="occupation"
-                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="occupation"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Select</option>
                 <option value="student">Student</option>
@@ -235,13 +295,14 @@ const EditBiodata = () => {
             <div>
               <label
                 for="race"
-                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Religion
               </label>
               <select
                 id="race"
-                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="race"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Select</option>
                 <option value="islam">Islam</option>
@@ -253,37 +314,37 @@ const EditBiodata = () => {
           </div>
 
           {/* parent's name */}
-          <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full mb-5 ">
+          <div className="grid md:grid-cols-2 md:gap-6">
+            <div className="relative z-0 w-full mb-5 ">
               <input
                 type="text"
                 name="fathers_name"
                 id="fathers_name"
-                class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
               />
 
               <label
                 for="fathers_name"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Father's Name
               </label>
             </div>
 
-            <div class="relative z-0 w-full mb-5 ">
+            <div className="relative z-0 w-full mb-5 ">
               <input
                 type="text"
                 name="mothers_name"
                 id="mothers_name"
-                class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
               />
               <label
                 for="mothers_name"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Mother's Name
               </label>
@@ -296,79 +357,80 @@ const EditBiodata = () => {
             <div>
               <label
                 for="permanentDivision"
-                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Permanent Division Name
               </label>
               <select
                 id="permanentDivision"
-                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="permanentDivision"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Select</option>
-                <option value="dhaka">Dhaka</option>
-                <option value="chattagram">Chattagram</option>
-                <option value="rangpur">Rangpur</option>
-                <option value="barisal">Barisal</option>
-                <option value="khulna">Khulna</option>
-                <option value="mymensing">Mymensing</option>
-                <option value="sylhet">Sylhet</option>
+                <option value="Dhaka">Dhaka</option>
+                <option value="Chattagram">Chattagram</option>
+                <option value="Rangpur">Rangpur</option>
+                <option value="Barisal">Barisal</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Mymensing">Mymensing</option>
+                <option value="Sylhet">Sylhet</option>
               </select>
             </div>
 
             <div>
               <label
                 for="presentDivision"
-                class="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Present Division Name
               </label>
               <select
                 id="presentDivision"
-                class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                name="presentDivision"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option selected>Select</option>
-                <option value="dhaka">Dhaka</option>
-                <option value="chattagram">Chattagram</option>
-                <option value="rangpur">Rangpur</option>
-                <option value="barisal">Barisal</option>
-                <option value="khulna">Khulna</option>
-                <option value="mymensing">Mymensing</option>
-                <option value="sylhet">Sylhet</option>
+                <option value="Dhaka">Dhaka</option>
+                <option value="Chattagram">Chattagram</option>
+                <option value="Rangpur">Rangpur</option>
+                <option value="Barisal">Barisal</option>
+                <option value="Khulna">Khulna</option>
+                <option value="Mymensing">Mymensing</option>
+                <option value="Sylhet">Sylhet</option>
               </select>
             </div>
           </div>
 
           {/* email and phone */}
-          <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 w-full mb-5 group">
+          <div className="grid md:grid-cols-2 md:gap-6">
+            <div className="relative z-0 w-full mb-5 group">
               <input
                 type="email"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 name="email"
                 id="email"
-                class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
               />
               <label
                 for="email"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Your email
               </label>
             </div>
-            <div class="relative z-0 w-full mb-5 group">
+            <div className="relative z-0 w-full mb-5 group">
               <input
                 type="text"
                 name="phone"
                 id="phone"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
               />
               <label
                 for="phone"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Your phone number
               </label>
@@ -376,7 +438,7 @@ const EditBiodata = () => {
           </div>
           <button
             type="submit"
-            class="text-white bg-[#a9106b] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-[#a9106b] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Submit
           </button>

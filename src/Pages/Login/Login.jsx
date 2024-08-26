@@ -1,13 +1,18 @@
 import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import Swal from "sweetalert2";
+import GoogleSignIn from "../../Components/GoogleSignIn";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -20,6 +25,9 @@ const Login = () => {
     signIn(email, password).then((result) => {
       const user = result.user;
       console.log(user);
+
+      navigate(from, { replace: true });
+
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -85,7 +93,7 @@ const Login = () => {
               //   onClick={handleGoogleSignIn}
               className="text-[#eb4d4b] font-bold mx-2 cursor-pointer hover:underline"
             >
-              <FaGoogle />
+              <GoogleSignIn></GoogleSignIn>
             </span>
           </p>
           <p>

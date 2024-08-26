@@ -1,15 +1,19 @@
 import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProviders";
 import { updateProfile } from "firebase/auth";
-
+import GoogleSignIn from "../../Components/GoogleSignIn";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
+  
 
-    const { createUser } = useContext(AuthContext);
+  const { createUser, logOut } = useContext(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -24,47 +28,51 @@ const Register = () => {
     const password = form.password.value;
 
     createUser(email, password)
-    .then((result) => {
-      console.log(result.user);
-      Swal.fire({
-        title: "success!",
-        text: "You have been registered successfully",
-        icon: "success",
-        confirmButtonText: "Cool",
-      });
+      .then((result) => {
+        console.log(result.user);
 
-      updateProfile(result.user, {
-        displayName: name,
-        photoURL: photo,
-      })
-        .then(() => console.log("Profile updated"))
-        .catch((error) => {
-          console.error(error);
+        updateProfile(result.user, {
+          displayName: name,
+          photoURL: photo,
+        }).then(() => {
+          const userInfo = {
+            name,
+            email,
+          };
+
+          axiosPublic.post("/users", userInfo).then((res) => {
+            console.log(res.data);
+            if (res.data.insertedId) {
+              Swal.fire({
+                title: "success!",
+                text: "You have been registered successfully",
+                icon: "success",
+                confirmButtonText: "Cool",
+              });
+              navigate(from, { replace: true });
+            }
+          });
         });
 
-      location.reload();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+        logOut().then(() => console.log("logged out successfully "));
+        navigate('/login')
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
-  e.target.reset();
+    e.target.reset();
+  };
 
-
-
-  }
-
-    return (
-        <div className=" w-[80%] mx-auto items-center justify-center">
+  return (
+    <div className=" w-[80%] mx-auto items-center justify-center">
       <Helmet>
         <title>Heartsync | Register</title>
       </Helmet>
       <div className=" lg:w-[50%] bg-purple-200 p-8  mx-auto text-gray-700 my-8 rounded-lg">
         <h2 className="text-center text-3xl font-bold">Please Register</h2>
 
-        <form 
-        onSubmit={handleRegister} 
-        className="form-action">
+        <form onSubmit={handleRegister} className="form-action">
           <div className="w-full">
             <label className="pl-4 " htmlFor="name">
               Your name:
@@ -110,12 +118,12 @@ const Register = () => {
             </label>
             <input
               className="bg-gray-200 py-2 px-4 w-full mb-2 rounded-lg border-2 border-gray-400"
-            type={showPassword ? "text" : "password"}
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               name="password"
               id="password"
             />
-             <span
+            <span
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-2 top-9"
             >
@@ -131,13 +139,13 @@ const Register = () => {
         </form>
 
         <div className="text-center mt-4 space-y-2">
-        <p className="flex justify-center items-center">
-            Sign In with  
+          <p className="flex justify-center items-center">
+            Sign In with
             <span
               //   onClick={handleGoogleSignIn}
               className="text-[#eb4d4b] font-bold mx-2 cursor-pointer hover:underline"
             >
-             <FaGoogle />
+              <GoogleSignIn></GoogleSignIn>
             </span>
           </p>
           <p>
@@ -149,7 +157,7 @@ const Register = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Register;
