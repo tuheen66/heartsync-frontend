@@ -7,6 +7,8 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import Dashboard from "./../Layout/Dashboard";
 import EditBiodata from "../Dashboard/EditBiodata";
 import PrivateRoute from "./PrivateRoute";
+import ManageUsers from "../Dashboard/AdminHome/ManageUsers";
+import AdminDashboard from "../Dashboard/AdminHome/AdminDashboard";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "/dashboard",
+        element: <AdminDashboard></AdminDashboard>,
+      },
+      {
+        path: "manage",
+        element: <ManageUsers></ManageUsers>,
+      },
       {
         path: "editBiodata",
         element: <EditBiodata></EditBiodata>,
