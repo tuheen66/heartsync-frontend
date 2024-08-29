@@ -9,6 +9,7 @@ import EditBiodata from "../Dashboard/EditBiodata";
 import PrivateRoute from "./PrivateRoute";
 import ManageUsers from "../Dashboard/AdminHome/ManageUsers";
 import AdminDashboard from "../Dashboard/AdminHome/AdminDashboard";
+import ViewBiodata from "../Dashboard/ViewBiodata";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard",
+        path: "adminDashboard",
         element: <AdminDashboard></AdminDashboard>,
       },
       {
@@ -52,6 +53,11 @@ export const router = createBrowserRouter([
       {
         path: "editBiodata",
         element: <EditBiodata></EditBiodata>,
+      },
+      {
+        path: "viewBiodata",
+        element: <ViewBiodata></ViewBiodata>,
+        
       },
     ],
   },

@@ -1,11 +1,73 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAuth from "../hooks/useAuth";
 
 const EditBiodata = () => {
-  const [birthDate, setBirthDate] = useState(null);
+  // const emptyFormData = {
+  //   name: "",
+  //   photo: "",
+  //   gender: "",
+  //   birth_date: "",
+  //   height: "",
+  //   weight: "",
+  //   partner_height: "",
+  //   partner_weight: "",
+  //   age: "",
+  //   partner_age: "",
+  //   occupation: "",
+  //   race: "",
+  //   father_name: "",
+  //   mother_name: "",
+  //   permanentDivision: "",
+  //   presentDivision: "",
+  //   email: "",
+  //   phone: "",
+  // };
 
-  const handleBiodata = (e) => {
+  const [formData, setFormData] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [birthDate, setBirthDate] = useState(null);
+  const { user } = useAuth();
+  const axiosPublic = useAxiosPublic();
+
+  // useEffect(() => {
+  //   if (_id) {
+  //     setIsEditing(true);
+  //     fetch(`http://localhost:5000/biodata/${_id}`)
+  //       .then((res) => res.json())
+  //       .then((data) => setFormData(data))
+  //       .catch((err) => console.error(err));
+  //     console.log(data);
+  //   }
+  // }, [_id]);
+
+  // const handleChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     name: e.target.value,
+  //     [e.target.photo]: e.target.value,
+  //     [e.target.gender]: e.target.value,
+  //     [e.target.birth_date]: e.target.value,
+  //     [e.target.height]: e.target.value,
+  //     [e.target.weight]: e.target.value,
+  //     [e.target.partner_height]: e.target.value,
+  //     [e.target.partner_weight]: e.target.value,
+  //     [e.target.age]: e.target.value,
+  //     [e.target.partner_age]: e.target.value,
+  //     [e.target.occupation]: e.target.value,
+  //     [e.target.race]: e.target.value,
+  //     [e.target.father_name]: e.target.value,
+  //     [e.target.mother_name]: e.target.value,
+  //     [e.target.permanent_division]: e.target.value,
+  //     [e.target.present_division]: e.target.value,
+  //     [e.target.phone]: e.target.value,
+  //   });
+  // };
+
+  const handleSubmitBiodata = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -51,6 +113,10 @@ const EditBiodata = () => {
     };
 
     console.log(biodata);
+
+    axiosPublic.post("/biodata", biodata).then((res) => {
+      console.log(res.data);
+    });
   };
 
   return (
@@ -60,7 +126,7 @@ const EditBiodata = () => {
       </h2>
       <div className="text-gray-600">
         <form
-          onSubmit={handleBiodata}
+          onSubmit={handleSubmitBiodata}
           className="max-w-md mx-auto text-gray-600 mb-12"
         >
           {/* name */}
@@ -74,7 +140,7 @@ const EditBiodata = () => {
               required
             />
             <label
-              for="name"
+              htmlFor="name"
               className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Your Name
@@ -91,7 +157,7 @@ const EditBiodata = () => {
               required
             />
             <label
-              for="photo"
+              htmlFor="photo"
               className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Photo URL
@@ -102,7 +168,7 @@ const EditBiodata = () => {
           <div className="grid grid-cols-2 gap-6">
             <div>
               <label
-                for="gender"
+                htmlFor="gender"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Select an option
@@ -112,7 +178,7 @@ const EditBiodata = () => {
                 name="gender"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Gender</option>
+                <option value="Gender">Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
@@ -134,7 +200,7 @@ const EditBiodata = () => {
           <div className="grid grid-cols-2 gap-6 my-4 text-gray-500">
             <div>
               <label
-                for="height"
+                htmlFor="height"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Height
@@ -144,7 +210,7 @@ const EditBiodata = () => {
                 name="height"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Select</option>
+                <option value="Select">Select</option>
                 <option value="5.0">5' 0"</option>
                 <option value="5.2">5' 2"</option>
                 <option value="5.4">5' 4"</option>
@@ -156,7 +222,7 @@ const EditBiodata = () => {
             </div>
             <div>
               <label
-                for="weight"
+                htmlFor="weight"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Weight
@@ -166,7 +232,7 @@ const EditBiodata = () => {
                 name="weight"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Select</option>
+                <option value="Select">Select</option>
                 <option value="50">45-50 kg</option>
                 <option value="55">50-55 kg</option>
                 <option value="60">55-60 kg</option>
@@ -186,7 +252,7 @@ const EditBiodata = () => {
           <div className="grid grid-cols-2 gap-6 my-4">
             <div>
               <label
-                for="partner_height"
+                htmlFor="partner_height"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Expected Partner's Height
@@ -196,7 +262,7 @@ const EditBiodata = () => {
                 name="partner_height"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Select</option>
+                <option value="Select">Select</option>
                 <option value="5.0">5' 0"</option>
                 <option value="5.2">5' 2"</option>
                 <option value="5.4">5' 4"</option>
@@ -208,7 +274,7 @@ const EditBiodata = () => {
             </div>
             <div>
               <label
-                for="partner_weight"
+                htmlFor="partner_weight"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Expected Partner's Weight
@@ -218,7 +284,7 @@ const EditBiodata = () => {
                 name="partner_weight"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Select</option>
+                <option value="Select">Select</option>
                 <option value="50">45-50 kg</option>
                 <option value="55">50-55 kg</option>
                 <option value="60">55-60 kg</option>
@@ -246,7 +312,7 @@ const EditBiodata = () => {
                 required
               />
               <label
-                for="age"
+                htmlFor="age"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Age
@@ -262,7 +328,7 @@ const EditBiodata = () => {
                 required
               />
               <label
-                for="partner_age"
+                htmlFor="partner_age"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Expected Partner Age
@@ -275,7 +341,7 @@ const EditBiodata = () => {
           <div className="grid grid-cols-2 gap-6 my-4">
             <div>
               <label
-                for="occupation"
+                htmlFor="occupation"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Occupation
@@ -285,7 +351,7 @@ const EditBiodata = () => {
                 name="occupation"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Select</option>
+                <option value="Select">Select</option>
                 <option value="student">Student</option>
                 <option value="job">Job</option>
                 <option value="house_wife">House Wife</option>
@@ -294,7 +360,7 @@ const EditBiodata = () => {
 
             <div>
               <label
-                for="race"
+                htmlFor="race"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Religion
@@ -304,7 +370,7 @@ const EditBiodata = () => {
                 name="race"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Select</option>
+                <option value="Select">Select</option>
                 <option value="islam">Islam</option>
                 <option value="christian">Christian</option>
                 <option value="sanatan">Sanatan</option>
@@ -326,7 +392,7 @@ const EditBiodata = () => {
               />
 
               <label
-                for="fathers_name"
+                htmlFor="fathers_name"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Father's Name
@@ -343,7 +409,7 @@ const EditBiodata = () => {
                 required
               />
               <label
-                for="mothers_name"
+                htmlFor="mothers_name"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Mother's Name
@@ -356,7 +422,7 @@ const EditBiodata = () => {
           <div className="grid grid-cols-2 gap-6 my-4">
             <div>
               <label
-                for="permanentDivision"
+                htmlFor="permanentDivision"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Permanent Division Name
@@ -366,7 +432,7 @@ const EditBiodata = () => {
                 name="permanentDivision"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Select</option>
+                <option value="Select">Select</option>
                 <option value="Dhaka">Dhaka</option>
                 <option value="Chattagram">Chattagram</option>
                 <option value="Rangpur">Rangpur</option>
@@ -379,7 +445,7 @@ const EditBiodata = () => {
 
             <div>
               <label
-                for="presentDivision"
+                htmlFor="presentDivision"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-white"
               >
                 Present Division Name
@@ -389,7 +455,7 @@ const EditBiodata = () => {
                 name="presentDivision"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Select</option>
+                <option value="Select">Select</option>
                 <option value="Dhaka">Dhaka</option>
                 <option value="Chattagram">Chattagram</option>
                 <option value="Rangpur">Rangpur</option>
@@ -407,18 +473,21 @@ const EditBiodata = () => {
               <input
                 type="email"
                 name="email"
+                defaultValue={user.email}
                 id="email"
                 className="block py-2.5 px-2 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
+                disabled
               />
               <label
-                for="email"
+                htmlFor="email"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Your email
               </label>
             </div>
+
             <div className="relative z-0 w-full mb-5 group">
               <input
                 type="text"
@@ -429,7 +498,7 @@ const EditBiodata = () => {
                 required
               />
               <label
-                for="phone"
+                htmlFor="phone"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Your phone number

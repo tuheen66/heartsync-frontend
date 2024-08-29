@@ -1,7 +1,15 @@
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+
+  const { logOut } = useAuth();
+
+  const handleLogout = () => {
+    logOut().then(() => console.log("logged out successfully "));
+  };
 
   return (
     <div className="w-[90%] mx-auto flex">
@@ -11,7 +19,9 @@ const Dashboard = () => {
             <h2 className="font-bold text-xl px-4">Admin Home</h2>
             <ul className="flex flex-col gap-6 px-4">
               <li>
-                <NavLink to="/dashboard">Admin Dashboard</NavLink>
+                <NavLink to="/dashboard/adminDashboard">
+                  Admin Dashboard
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manage">Manage Users</NavLink>
@@ -22,14 +32,14 @@ const Dashboard = () => {
               <li>
                 <NavLink to="appContactReq">Approved Contact Request</NavLink>
               </li>
-              
             </ul>
           </>
         ) : (
           <>
-            <ul>
+            <h2 className="font-bold text-xl px-4">User Home</h2>
+            <ul className="flex flex-col gap-6 px-4">
               <li>
-                <NavLink to="editBiodata">Edit Biodata</NavLink>
+                <NavLink to="/dashboard/editBiodata">Edit Biodata</NavLink>
               </li>
               <li>
                 <NavLink to="viewBiodata">View Biodata</NavLink>
@@ -44,7 +54,9 @@ const Dashboard = () => {
           </>
         )}
 
-        <button className="bg-[#a9106b] text-white p-2">Logout</button>
+        <button onClick={handleLogout} className="bg-[#a9106b] text-white p-2">
+          Logout
+        </button>
         <hr />
         <ul>
           <li>
