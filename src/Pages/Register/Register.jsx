@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProviders";
@@ -11,9 +11,8 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 const Register = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
-  
 
-  const { createUser, logOut } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -54,8 +53,7 @@ const Register = () => {
           });
         });
 
-        logOut().then(() => console.log("logged out successfully "));
-        navigate('/login')
+        navigate("/login");
       })
       .catch((error) => {
         console.error(error);

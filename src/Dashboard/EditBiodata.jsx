@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const EditBiodata = () => {
   // const emptyFormData = {
@@ -26,8 +27,7 @@ const EditBiodata = () => {
   //   phone: "",
   // };
 
-  const [formData, setFormData] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+ 
 
   const [birthDate, setBirthDate] = useState(null);
   const { user } = useAuth();
@@ -116,6 +116,15 @@ const EditBiodata = () => {
 
     axiosPublic.post("/biodata", biodata).then((res) => {
       console.log(res.data);
+
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: "success!",
+          text: "Your Biodata is uploaded successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+      }
     });
   };
 

@@ -22,7 +22,7 @@ const Navbar = () => {
         <div>
           <div className="flex flex-col md:flex-row font-semibold text-gray-700 justify-between items-center gap-2 md:gap-8">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/">Biodatas</NavLink>
+            <NavLink to="/biodatas">Biodatas</NavLink>
             <NavLink to="/">About Us</NavLink>
             <NavLink to="/contactUs">Contact Us</NavLink>
             {user && <NavLink to="dashboard">Dashboard</NavLink>}
