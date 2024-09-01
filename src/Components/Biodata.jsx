@@ -8,28 +8,28 @@ const Biodata = ({ biodata }) => {
   return (
     <div className="border-2 border-gray-300 shadow-gray-400 shadow-xl px-4 pb-4">
       <div className="flex  mt-12 ">
-        <div class=" w-[70%]">
-          <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
+        <div className=" w-[70%]">
+          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-900 uppercase dark:text-gray-400">
               <tr>
-                <th scope="col" class=" ">
+                <th scope="col" className=" ">
                   Name
                 </th>
-                <th scope="col" class="px-4">
+                <th scope="col" className="px-4">
                   :
                 </th>
-                <th scope="col" class="">
+                <th scope="col" className="">
                   {biodata.name}
                 </th>
               </tr>
               <tr>
-                <th scope="col" class=" ">
+                <th scope="col" className=" ">
                   Biodata id
                 </th>
-                <th scope="col" class="px-4 py-2">
+                <th scope="col" className="px-4 py-2">
                   :
                 </th>
-                <th scope="col" class="">
+                <th scope="col" className="">
                   {biodata.biodataId}
                 </th>
               </tr>
@@ -38,43 +38,43 @@ const Biodata = ({ biodata }) => {
               <tr className="bg-white dark:bg-gray-800">
                 <th
                   scope="row"
-                  class=" py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className=" py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   Biodata Type
                 </th>
-                <td class="px-4">:</td>
+                <td className="px-4">:</td>
                 <td>{biodata.gender}</td>
               </tr>
 
               <tr className="bg-white dark:bg-gray-800">
                 <th
                   scope="row"
-                  class="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   Age
                 </th>
-                <td class="px-4">:</td>
+                <td className="px-4">:</td>
                 <td>{biodata.age} yrs</td>
               </tr>
               <tr className="bg-white dark:bg-gray-800">
                 <th
                   scope="row"
-                  class="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   Occupation
                 </th>
-                <td class="px-4">:</td>
+                <td className="px-4">:</td>
                 <td>{biodata.occupation}</td>
               </tr>
 
               <tr className="bg-white dark:bg-gray-800">
                 <th
                   scope="row"
-                  class="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   Permanent Division
                 </th>
-                <td class="px-4">:</td>
+                <td className="px-4">:</td>
                 <td>{biodata.permanentDivision}</td>
               </tr>
             </tbody>

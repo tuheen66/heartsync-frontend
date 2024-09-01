@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 import { AuthContext } from "../../providers/AuthProviders";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const BiodataDetails = () => {
   const biodata = useLoaderData();
-  console.log(biodata);
+  const axiosPublic = useAxiosPublic();
+
+  // console.log(biodata._id);
 
   const { user } = useContext(AuthContext);
-
-  console.log(user);
 
   const birthDate = biodata.birth_date;
   const date = new Date(birthDate);
@@ -18,6 +20,30 @@ const BiodataDetails = () => {
   const formattedDate = date
     .toLocaleDateString("en-GB", options)
     .replace(",", "");
+
+  const handleAddToFavorite = () => {
+    if (user && user?.email) {
+      const favoriteBio = {
+        name: biodata.name,
+        biodataId: biodata.biodataId,
+        permanentAddress: biodata.permanentDivision,
+        occupation: biodata.occupation,
+        email: user.email,
+      };
+
+      axiosPublic.post("/favorite", favoriteBio).then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "The Biodata has been added to your favorite list",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+      });
+    }
+  };
 
   return (
     <div>
@@ -229,6 +255,15 @@ const BiodataDetails = () => {
             <img className="" src={biodata.photo} alt="" />
           </div>
         </div>
+
+        <Link>
+          <button
+            onClick={handleAddToFavorite}
+            className="bg-[#a9106b] text-white px-4 py-2 my-4"
+          >
+            Add to Favorite
+          </button>{" "}
+        </Link>
       </div>
     </div>
   );

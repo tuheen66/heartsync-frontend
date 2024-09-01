@@ -48,7 +48,7 @@ const Dashboard = () => {
                 <NavLink to="myContactRequest">My Contact Request</NavLink>
               </li>
               <li>
-                <NavLink to="editBiodata">Favorite Biodata</NavLink>
+                <NavLink to="favoriteBiodata">Favorite Biodata</NavLink>
               </li>
             </ul>
           </>

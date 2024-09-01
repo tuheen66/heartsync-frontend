@@ -12,6 +12,7 @@ import AdminDashboard from "../Dashboard/AdminHome/AdminDashboard";
 import ViewBiodata from "../Dashboard/ViewBiodata";
 import Biodatas from "../Pages/Biodatas/Biodatas";
 import BiodataDetails from "../Pages/BiodataDetails/BiodataDetails";
+import FavoriteBiodata from "../Dashboard/FavoriteBiodata";
 
 export const router = createBrowserRouter([
   {
@@ -41,7 +42,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/biodata-details/:id",
-        element: <PrivateRoute><BiodataDetails></BiodataDetails></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <BiodataDetails></BiodataDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodata/${params.id}`),
       },
@@ -71,6 +76,10 @@ export const router = createBrowserRouter([
         path: "viewBiodata",
         element: <ViewBiodata></ViewBiodata>,
       },
+      {
+        path:"favoriteBiodata",
+        element:<FavoriteBiodata></FavoriteBiodata>
+      }
     ],
   },
 ]);

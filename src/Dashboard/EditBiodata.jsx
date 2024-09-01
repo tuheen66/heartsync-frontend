@@ -6,66 +6,9 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const EditBiodata = () => {
-  // const emptyFormData = {
-  //   name: "",
-  //   photo: "",
-  //   gender: "",
-  //   birth_date: "",
-  //   height: "",
-  //   weight: "",
-  //   partner_height: "",
-  //   partner_weight: "",
-  //   age: "",
-  //   partner_age: "",
-  //   occupation: "",
-  //   race: "",
-  //   father_name: "",
-  //   mother_name: "",
-  //   permanentDivision: "",
-  //   presentDivision: "",
-  //   email: "",
-  //   phone: "",
-  // };
-
- 
-
   const [birthDate, setBirthDate] = useState(null);
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
-
-  // useEffect(() => {
-  //   if (_id) {
-  //     setIsEditing(true);
-  //     fetch(`http://localhost:5000/biodata/${_id}`)
-  //       .then((res) => res.json())
-  //       .then((data) => setFormData(data))
-  //       .catch((err) => console.error(err));
-  //     console.log(data);
-  //   }
-  // }, [_id]);
-
-  // const handleChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     name: e.target.value,
-  //     [e.target.photo]: e.target.value,
-  //     [e.target.gender]: e.target.value,
-  //     [e.target.birth_date]: e.target.value,
-  //     [e.target.height]: e.target.value,
-  //     [e.target.weight]: e.target.value,
-  //     [e.target.partner_height]: e.target.value,
-  //     [e.target.partner_weight]: e.target.value,
-  //     [e.target.age]: e.target.value,
-  //     [e.target.partner_age]: e.target.value,
-  //     [e.target.occupation]: e.target.value,
-  //     [e.target.race]: e.target.value,
-  //     [e.target.father_name]: e.target.value,
-  //     [e.target.mother_name]: e.target.value,
-  //     [e.target.permanent_division]: e.target.value,
-  //     [e.target.present_division]: e.target.value,
-  //     [e.target.phone]: e.target.value,
-  //   });
-  // };
 
   const handleSubmitBiodata = (e) => {
     e.preventDefault();
