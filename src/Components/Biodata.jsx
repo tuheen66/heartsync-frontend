@@ -6,9 +6,9 @@ const Biodata = ({ biodata }) => {
 
   
   return (
-    <div className="border-2 border-gray-300 shadow-gray-400 shadow-xl px-4 pb-4">
-      <div className="flex  mt-12 ">
-        <div className=" w-[70%]">
+    <div className=" flex flex-col  border-2 border-gray-300 shadow-gray-400 shadow-xl px-4 pb-4 ">
+      <div className="flex  mt-12 flex-grow ">
+        <div className=" w-[70%] ">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-900 uppercase dark:text-gray-400">
               <tr>
@@ -85,6 +85,7 @@ const Biodata = ({ biodata }) => {
           <img className="" src={biodata.photo} alt="" />
         </div>
       </div>
+
       <Link to={`/biodata-details/${biodata._id}`}>
       <button
       

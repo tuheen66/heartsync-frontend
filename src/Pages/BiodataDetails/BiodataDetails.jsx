@@ -4,6 +4,8 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import Biodata from "../../Components/Biodata";
 
 const BiodataDetails = () => {
   const biodata = useLoaderData();
@@ -44,6 +46,23 @@ const BiodataDetails = () => {
       });
     }
   };
+
+  const { data: similar = [] } = useQuery({
+    queryKey: ["similar"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/similar");
+      return res.data;
+    },
+  });
+
+  const similarBiodata = similar.filter(
+    (bio) =>
+      biodata.gender === bio.gender && biodata.biodataId !== bio.biodataId
+  );
+
+  const selectedBiodata = similarBiodata.slice(0, 3);
+
+  console.log(selectedBiodata);
 
   return (
     <div>
@@ -264,6 +283,14 @@ const BiodataDetails = () => {
             Add to Favorite
           </button>{" "}
         </Link>
+      </div>
+      <div className="mb-12">
+        <h2 className="text-center text-3xl font-bold text-gray-600 my-12">Some similar biodata you might be interested in</h2>
+        <div className="grid grid-cols-3 w-4/5 mx-auto gap-8 ">
+          {selectedBiodata.map((biodata) => (
+            <Biodata key={biodata.biodataId} biodata={biodata}></Biodata>
+          ))}
+        </div>
       </div>
     </div>
   );
