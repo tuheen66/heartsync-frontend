@@ -13,6 +13,8 @@ import ViewBiodata from "../Dashboard/ViewBiodata";
 import Biodatas from "../Pages/Biodatas/Biodatas";
 import BiodataDetails from "../Pages/BiodataDetails/BiodataDetails";
 import FavoriteBiodata from "../Dashboard/FavoriteBiodata";
+import ApprovedPremium from "../Dashboard/AdminHome/ApprovedPremium";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -62,11 +64,27 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "adminDashboard",
-        element: <AdminDashboard></AdminDashboard>,
+        element: (
+          <AdminRoute>
+            <AdminDashboard></AdminDashboard>
+          </AdminRoute>
+        ),
       },
       {
         path: "manage",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "appPremium",
+        element: (
+          <AdminRoute>
+            <ApprovedPremium></ApprovedPremium>
+          </AdminRoute>
+        ),
       },
       {
         path: "editBiodata",
@@ -77,9 +95,9 @@ export const router = createBrowserRouter([
         element: <ViewBiodata></ViewBiodata>,
       },
       {
-        path:"favoriteBiodata",
-        element:<FavoriteBiodata></FavoriteBiodata>
-      }
+        path: "favoriteBiodata",
+        element: <FavoriteBiodata></FavoriteBiodata>,
+      },
     ],
   },
 ]);

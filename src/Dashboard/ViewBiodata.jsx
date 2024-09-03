@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../hooks/useAuth";
 
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const ViewBiodata = () => {
   const { user } = useAuth();
@@ -23,15 +24,44 @@ const ViewBiodata = () => {
     .toLocaleDateString("en-GB", options)
     .replace(",", "");
 
+  const premBioInfo = {
+    name: biodata.name,
+    biodataId: biodata.biodataId,
+    photo: biodata.photo,
+    biodataType: biodata.gender,
+    age: biodata.age,
+    occupation: biodata.occupation,
+    permanentDivision: biodata.permanentDivision,
+    email: biodata.email,
+  };
+
+ 
+
+  const handleBiodataPremiumRequest = (biodata) => {
+    axiosPublic.patch(`/biodata/premium/${biodata._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${biodata.name} is made Premium`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
+
   return (
-    <div>
+    <div className="">
       {biodata ? (
         <>
           <h2 className="text-4xl font-bold text-center mt-12">
             Biodata of {biodata.name}
           </h2>
 
-          <div className="flex  mt-12 ">
+          <div className="flex  my-12 ">
             <div class=" w-[70%] ml-12">
               <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
@@ -213,6 +243,14 @@ const ViewBiodata = () => {
                   </tr>
                 </tbody>
               </table>
+              <div className="px-6">
+                <button
+                  onClick={() => handleBiodataPremiumRequest(biodata)}
+                  className="bg-[#a9106b] text-white px-4 py-2 mt-12 "
+                >
+                  Make Biodata to Premium
+                </button>
+              </div>
             </div>
 
             <div className="w-[30%] ">

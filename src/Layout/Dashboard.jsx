@@ -27,7 +27,7 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/manage">Manage Users</NavLink>
               </li>
               <li>
-                <NavLink to="appPremium">Approved Premium</NavLink>
+                <NavLink to="/dashboard/appPremium">Approved Premium</NavLink>
               </li>
               <li>
                 <NavLink to="appContactReq">Approved Contact Request</NavLink>

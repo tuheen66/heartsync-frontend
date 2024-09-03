@@ -96,7 +96,7 @@ const ManageUsers = () => {
                     )}
                   </td>
                   <td className="px-6 py-4 font-bold uppercase text-blue-500">
-                    {user.role === "premium" ? (
+                    {user.membership === "premium" ? (
                       "Premium"
                     ) : (
                       <button
