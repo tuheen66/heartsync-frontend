@@ -3,6 +3,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ApprovedPremium = () => {
   const axiosPublic = useAxiosPublic();
@@ -45,6 +46,9 @@ const ApprovedPremium = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Heartsync | Approved Premium</title>
+      </Helmet>
       <h2 className="text-center font-bold text-3xl text-gray-600 my-12">
         Make Biodata Premium Request
       </h2>

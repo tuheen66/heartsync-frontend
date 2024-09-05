@@ -40,7 +40,7 @@ const PremiumMemberCard = ({biodata}) => {
                   Biodata Type
                 </th>
                 <td className="px-4">:</td>
-                <td>{biodata.biodataType}</td>
+                <td>{biodata.gender}</td>
               </tr>
 
               <tr className="bg-white dark:bg-gray-800">

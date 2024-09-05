@@ -1,28 +1,57 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Biodata from "../../Components/Biodata";
+import { useState } from "react";
 
 const Biodatas = () => {
   const axiosPublic = useAxiosPublic();
 
-  const { data: biodatas = [] } = useQuery({
-    queryKey: ["biodatas"],
+  const [gender, setGender] = useState("");
+  const [minAge, setMinAge] = useState(null);
+  const [maxAge, setMaxAge] = useState(null);
+  const [permaDivision, setPermaDivision] = useState("");
+
+  const { data: biodatas = [], refetch } = useQuery({
+    queryKey: ["biodatas", gender, minAge, maxAge, permaDivision],
     queryFn: async () => {
-      const res = await axiosPublic.get("/biodata", {});
+      const res = await axiosPublic.get(`/search-biodata`, {
+        params: {
+          gender: gender || "",
+          minAge: minAge || "",
+          maxAge: maxAge || "",
+          permaDivision: permaDivision || "",
+        },
+      });
+
       return res.data;
     },
   });
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const selectGender = e.target.gender.value;
+    const smallAge = e.target.minAge.value;
+    const bigAge = e.target.maxAge.value;
+    const address = e.target.permanentDivision.value;
+    setGender(selectGender);
+    setMinAge(smallAge);
+    setMaxAge(bigAge);
+    setPermaDivision(address);
+  };
+ 
+  refetch();
+
   return (
     <div className="w-[90%] mx-auto my-12">
-     
       <div className="flex gap-8">
         <div className="w-1/3">
           <h2 className="text-center text-2xl font-bold text-gray-600">
-            
             Find your desired Biodata{" "}
           </h2>
-          <form className=" gap-4 my-8 justify-between items-center  mx-auto bg-purple-200 px-8 py-4 ">
+          <form
+            onSubmit={handleSearch}
+            className=" gap-4 my-8 justify-between items-center  mx-auto bg-purple-200 px-8 py-4 "
+          >
             <div>
               <label
                 htmlFor="gender"
@@ -35,14 +64,14 @@ const Biodatas = () => {
                 name="gender"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option value="Select">Select</option>
+                <option value="">Select</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
             </div>
 
             <div>
-              <div className="relative z-0  mb-5 ">
+              <div className="relative z-0  mb-5 mt-6 ">
                 <input
                   type="number"
                   name="minAge"
@@ -87,7 +116,7 @@ const Biodatas = () => {
                 name="permanentDivision"
                 className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option value="Select">Select</option>
+                <option value="">Select</option>
                 <option value="Dhaka">Dhaka</option>
                 <option value="Chattagram">Chattagram</option>
                 <option value="Rangpur">Rangpur</option>
@@ -97,7 +126,10 @@ const Biodatas = () => {
                 <option value="Sylhet">Sylhet</option>
               </select>
             </div>
-            <button className="bg-[#a9106b] text-white py-2 px-4 my-6 w-full" type="submit">
+            <button
+              className="bg-[#a9106b] text-white py-2 px-4 my-6 w-full"
+              type="submit"
+            >
               Search
             </button>
           </form>

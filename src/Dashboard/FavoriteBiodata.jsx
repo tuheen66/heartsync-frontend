@@ -7,7 +7,7 @@ const FavoriteBiodata = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
 
-  const { refetch, data: favBiodatas = [] } = useQuery({
+  const { data: favBiodatas = [], refetch } = useQuery({
     queryKey: ["favBiodatas", user?.email],
     queryFn: async () => {
       const res = await axiosPublic.get(`/favorite?email=${user?.email}`);
@@ -27,8 +27,8 @@ const FavoriteBiodata = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosPublic.delete(`/favorite/${id}`).then((res) => {
+          refetch();
           if (res.data.deleteCount > 0) {
-            refetch();
             Swal.fire({
               title: "Deleted!",
               text: "Your favorite biodata has been deleted.",

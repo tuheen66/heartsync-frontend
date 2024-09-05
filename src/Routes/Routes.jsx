@@ -15,6 +15,9 @@ import BiodataDetails from "../Pages/BiodataDetails/BiodataDetails";
 import FavoriteBiodata from "../Dashboard/FavoriteBiodata";
 import ApprovedPremium from "../Dashboard/AdminHome/ApprovedPremium";
 import AdminRoute from "./AdminRoute";
+import Checkout from "../Pages/Checkout/Checkout";
+import ContactRequest from "../Dashboard/ContactRequest";
+import AppContactReq from "../Dashboard/AdminHome/AppContactReq";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +55,12 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodata/${params.id}`),
       },
+      {
+        path:"checkout/:id",
+        element:<Checkout></Checkout>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/biodata/${params.id}`)
+      }
     ],
   },
   {
@@ -87,6 +96,13 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path:"appContactReq",
+        element:<AppContactReq></AppContactReq>
+
+      },
+
+      // regular user routes
+      {
         path: "editBiodata",
         element: <EditBiodata></EditBiodata>,
       },
@@ -95,9 +111,14 @@ export const router = createBrowserRouter([
         element: <ViewBiodata></ViewBiodata>,
       },
       {
+        path: "contactRequest",
+        element: <ContactRequest></ContactRequest>
+      },
+      {
         path: "favoriteBiodata",
         element: <FavoriteBiodata></FavoriteBiodata>,
       },
+      
     ],
   },
 ]);

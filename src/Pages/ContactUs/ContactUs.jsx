@@ -3,12 +3,16 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import ContactForm from "../../Components/ContactForm";
 import { FaEnvelope, FaHome, FaPhoneSquare } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const position = [42.829995, -76.096287];
 
 const ContactUs = () => {
   return (
     <div>
+      <Helmet>
+        <title>Heartsync | Contact Us</title>
+      </Helmet>
       <div
         className="mx-auto min-h-screen w-[90%] bg-cover bg-center"
         style={{

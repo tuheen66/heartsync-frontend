@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import { FaUser } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -47,6 +48,9 @@ const ManageUsers = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Heartsync | Manage Users</title>
+      </Helmet>
       <h2 className="text-3xl font-bol text-center mt-8">
         All Users : {users.length}
       </h2>

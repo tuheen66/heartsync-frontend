@@ -10,19 +10,6 @@ const Home = () => {
 
   const [asc, setAsc] = useState(true);
 
-  // const { data: premiumBiodata = [], refetch } = useQuery({
-  //   queryKey: ["premiumBiodata", asc],
-  //   queryFn: async () => {
-  //     const res = await axiosPublic.get(
-  //       `/biodata/premium?sort=${asc ? "asc" : "desc"}`
-  //     );
-
-  //     return res.data;
-  //   },
-  // });
-
-  // refetch();
-
   const [premiumBiodata, setPremiumBiodata] = useState([]);
 
   const { data: biodatas = [], refetch } = useQuery({
@@ -39,6 +26,8 @@ const Home = () => {
   const premiumBiodatas = premiumBiodata.filter(
     (premBiodata) => premBiodata.status === "premium"
   );
+
+  const displayPremBiodata = premiumBiodatas.slice(0, 6);
 
   return (
     <div className="w-[90%] mx-auto">
@@ -72,7 +61,7 @@ const Home = () => {
           </h2>
         </div>
         <div className="grid grid-cols-3 gap-12">
-          {premiumBiodatas.map((biodata) => (
+          {displayPremBiodata.map((biodata) => (
             <PremiumMemberCard
               key={biodata._id}
               biodata={biodata}

@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
@@ -13,6 +14,9 @@ const Dashboard = () => {
 
   return (
     <div className="w-[90%] mx-auto flex">
+      <Helmet>
+        <title>Heartsync | Dashboard</title>
+      </Helmet>
       <div className="w-64 min-h-screen bg-purple-300 flex flex-col gap-6 p-4 font-semibold text-gray-700">
         {isAdmin ? (
           <>
@@ -30,7 +34,7 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/appPremium">Approved Premium</NavLink>
               </li>
               <li>
-                <NavLink to="appContactReq">Approved Contact Request</NavLink>
+                <NavLink to="/dashboard/appContactReq">Approved Contact Request</NavLink>
               </li>
             </ul>
           </>
@@ -45,7 +49,7 @@ const Dashboard = () => {
                 <NavLink to="viewBiodata">View Biodata</NavLink>
               </li>
               <li>
-                <NavLink to="myContactRequest">My Contact Request</NavLink>
+                <NavLink to="contactRequest">My Contact Request</NavLink>
               </li>
               <li>
                 <NavLink to="favoriteBiodata">Favorite Biodata</NavLink>
@@ -66,6 +70,7 @@ const Dashboard = () => {
       </div>
       <div className="flex-1">
         <Outlet></Outlet>
+        
       </div>
     </div>
   );
