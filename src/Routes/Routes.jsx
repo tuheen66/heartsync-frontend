@@ -55,12 +55,6 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodata/${params.id}`),
       },
-      {
-        path:"checkout/:id",
-        element:<Checkout></Checkout>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/biodata/${params.id}`)
-      }
     ],
   },
   {
@@ -96,9 +90,8 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path:"appContactReq",
-        element:<AppContactReq></AppContactReq>
-
+        path: "appContactReq",
+        element: <AppContactReq></AppContactReq>,
       },
 
       // regular user routes
@@ -112,13 +105,23 @@ export const router = createBrowserRouter([
       },
       {
         path: "contactRequest",
-        element: <ContactRequest></ContactRequest>
+        element: <ContactRequest></ContactRequest>,
+      },
+
+      {
+        path: "checkout/:id",
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/biodata/${params.id}`),
       },
       {
         path: "favoriteBiodata",
         element: <FavoriteBiodata></FavoriteBiodata>,
       },
-      
     ],
   },
 ]);

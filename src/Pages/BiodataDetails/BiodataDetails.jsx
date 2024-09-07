@@ -89,6 +89,7 @@ const BiodataDetails = () => {
   if (isPending) {
     <LoadingSpinner></LoadingSpinner>;
   }
+
   return (
     <div>
       <Helmet>
@@ -310,7 +311,7 @@ const BiodataDetails = () => {
             </button>{" "}
           </Link>
           {!currentUser && (
-            <Link to={`/checkout/${biodata._id}`}>
+            <Link to={`/dashboard/checkout/${biodata._id}`}>
               <button
                 onClick={handleContactRequest}
                 className="bg-[#a9106b] text-white px-4 py-2 my-4"

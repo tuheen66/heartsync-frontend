@@ -1,13 +1,30 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const CheckoutForm = ({ biodata }) => {
-  const { user } = useAuth();
+  const [error, setError] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
+  const [transactionId, setTransactionId] = useState("");
+
   const stripe = useStripe();
   const elements = useElements();
-  const axiosPublic = useAxiosPublic();
+
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  // const axiosPublic = useAxiosPublic();
+
+  const fees = 5;
+
+  useEffect(() => {
+    axiosSecure.post("/create-payment-intent", { price: fees }).then((res) => {
+      console.log(res.data.clientSecret);
+      setClientSecret(res.data.clientSecret);
+    });
+  }, [axiosSecure, fees]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,8 +34,63 @@ const CheckoutForm = ({ biodata }) => {
     }
 
     const card = elements.getElement(CardElement);
-    if (card === null) {
+    if (card == null) {
       return;
+    }
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card,
+    });
+
+    if (error) {
+      console.log("[error]", error);
+      setError(error.message);
+    } else {
+      console.log("[PaymentMethod]", paymentMethod);
+      setError("");
+    }
+
+    const { paymentIntent, error: confirmError } =
+      await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: card,
+          billing_details: {
+            email: user?.email || "anonymous",
+            name: user?.displayName || "anonymous",
+          },
+        },
+      });
+
+    if (confirmError) {
+      console.log("confirm Error");
+    } else {
+      console.log("payment intent", paymentIntent);
+      if (paymentIntent.status === "succeeded") {
+        console.log("transaction Id", paymentIntent.id);
+        setTransactionId(paymentIntent.id);
+
+        const payment = {
+          email: user?.email,
+          fees: fees,
+          transactionId: paymentIntent.id,
+          date: new Date(),
+          name: biodata.name,
+          biodataId: biodata.biodataId,
+        };
+
+        const res = await axiosSecure.post("/payments", payment);
+
+        if (res.data?.paymentResult?.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Thank you for your payment",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      }
     }
 
     const email = event.target.email.value;
@@ -32,7 +104,7 @@ const CheckoutForm = ({ biodata }) => {
       email: biodata.email,
     };
 
-    axiosPublic.patch("/contact-request", biodataInfo).then((res) => {
+    axiosSecure.patch("/contact-request", biodataInfo).then((res) => {
       console.log(res.data);
       if (res.data.upsertedId) {
         Swal.fire({
@@ -86,6 +158,12 @@ const CheckoutForm = ({ biodata }) => {
             />
           </div>
         </div>
+        <label
+          htmlFor="email"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Your card details
+        </label>
         <CardElement className="border-2 py-2 px-4">
           options=
           {{
@@ -107,10 +185,18 @@ const CheckoutForm = ({ biodata }) => {
         <button
           className="mt-8 bg-[#a9106b] text-white px-4 py-2 my-"
           type="submit"
-          disabled={!stripe}
+          disabled={!stripe || !clientSecret}
         >
           Pay
         </button>
+
+        <p className="text-red-600 font-bold my-4">{error}</p>
+        {transactionId && (
+          <p className="text-green-600">
+            Your Transaction Id :{" "}
+            <span className="font-semibold">{transactionId}</span>
+          </p>
+        )}
       </form>
     </div>
   );
