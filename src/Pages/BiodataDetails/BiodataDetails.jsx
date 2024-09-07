@@ -26,7 +26,7 @@ const BiodataDetails = () => {
   });
 
   const premUsers = premiumUser.filter(
-    (prUser) => prUser.membership === "premium"
+    (prUser) => prUser.membership === "premium" || prUser.role === "admin"
   );
 
   const premEmails = premUsers.map((user) => user.email);

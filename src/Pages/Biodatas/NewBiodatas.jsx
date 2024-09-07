@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router-dom";
 import { paginationClasses } from "@mui/material";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const Biodatas = () => {
+const NewBiodatas = () => {
   const axiosPublic = useAxiosPublic();
 
   const [gender, setGender] = useState("");
@@ -180,7 +180,7 @@ const Biodatas = () => {
         </div>
       </div>
 
-      <div className="flex mt-16 justify-center">
+      <div className="flex">
         <button
           onClick={handlePrevPage}
           className="border-2 mx-2 bg-gray-300 px-4 py-3"
@@ -191,7 +191,7 @@ const Biodatas = () => {
           <button
             onClick={() => setCurrentPage(page)}
             className={`mx-4 px-4 ${
-              currentPage === page ? "bg-[#a9106b] text-white text-xl" : "bg-gray-300 text-xl"
+              currentPage === page ? "bg-blue-300" : "bg-gray-300"
             }`}
             key={paginationClasses}
           >
@@ -204,9 +204,11 @@ const Biodatas = () => {
         >
           <FaChevronRight></FaChevronRight>
         </button>
+
+        
       </div>
     </div>
   );
 };
 
-export default Biodatas;
+export default NewBiodatas;

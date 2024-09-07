@@ -23,9 +23,7 @@ const Dashboard = () => {
             <h2 className="font-bold text-xl px-4">Admin Home</h2>
             <ul className="flex flex-col gap-6 px-4">
               <li>
-                <NavLink to="/dashboard/adminDashboard">
-                  Admin Dashboard
-                </NavLink>
+                <NavLink to="adminDashboard">Admin Dashboard</NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manage">Manage Users</NavLink>
@@ -34,7 +32,14 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/appPremium">Approved Premium</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/appContactReq">Approved Contact Request</NavLink>
+                <NavLink to="/dashboard/appContactReq">
+                  Approved Contact Request
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="#">
+                  Success Story
+                </NavLink>
               </li>
             </ul>
           </>
@@ -43,7 +48,7 @@ const Dashboard = () => {
             <h2 className="font-bold text-xl px-4">User Home</h2>
             <ul className="flex flex-col gap-6 px-4">
               <li>
-                <NavLink to="/dashboard/editBiodata">Edit Biodata</NavLink>
+                <NavLink to="editBiodata">Edit Biodata</NavLink>
               </li>
               <li>
                 <NavLink to="viewBiodata">View Biodata</NavLink>
@@ -62,7 +67,7 @@ const Dashboard = () => {
           Logout
         </button>
         <hr />
-        <ul>
+        <ul className="flex flex-col gap-6 px-4">
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -70,7 +75,6 @@ const Dashboard = () => {
       </div>
       <div className="flex-1">
         <Outlet></Outlet>
-        
       </div>
     </div>
   );
