@@ -37,9 +37,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="#">
-                  Success Story
-                </NavLink>
+                <NavLink to="/dashboard/successStory">Success Story</NavLink>
               </li>
             </ul>
           </>
@@ -58,6 +56,9 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="favoriteBiodata">Favorite Biodata</NavLink>
+              </li>
+              <li className="flex">
+                <NavLink to="gotMarried">Got Married </NavLink>
               </li>
             </ul>
           </>

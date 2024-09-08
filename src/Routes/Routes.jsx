@@ -19,6 +19,8 @@ import Checkout from "../Pages/Checkout/Checkout";
 import ContactRequest from "../Dashboard/ContactRequest";
 import AppContactReq from "../Dashboard/AdminHome/AppContactReq";
 import NewBiodatas from "../Pages/Biodatas/NewBiodatas";
+import GotMarried from "../Dashboard/GotMarried";
+import SuccessStory from "../Dashboard/AdminHome/SuccessStory";
 
 export const router = createBrowserRouter([
   {
@@ -100,6 +102,10 @@ export const router = createBrowserRouter([
         path: "appContactReq",
         element: <AppContactReq></AppContactReq>,
       },
+      {
+        path: "successStory",
+        element: <SuccessStory></SuccessStory>
+      },
 
       // regular user routes
       {
@@ -128,6 +134,10 @@ export const router = createBrowserRouter([
       {
         path: "favoriteBiodata",
         element: <FavoriteBiodata></FavoriteBiodata>,
+      },
+      {
+        path: "gotMarried",
+        element: <GotMarried></GotMarried>,
       },
     ],
   },

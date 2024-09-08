@@ -4,6 +4,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import PremiumMemberCard from "../../Components/PremiumMemberCard";
 import { useState } from "react";
+import ReviewCard from "../../Components/ReviewCard";
 
 const Home = () => {
   const axiosPublic = useAxiosPublic();
@@ -69,14 +70,18 @@ const Home = () => {
           ))}
         </div>
       </section>
+
       <section>
         <h2 className="font-bold text-3xl">How it works:</h2>
       </section>
+
       <section>
         <h2 className="font-bold text-3xl">Success Counter Section</h2>
       </section>
-      <section>
+
+      <section className="my-4">
         <h2 className="font-bold text-3xl">Success Story Section : Reviews</h2>
+        <ReviewCard></ReviewCard>
       </section>
     </div>
   );

@@ -12,7 +12,7 @@ const Register = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logOut } = useContext(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -61,6 +61,8 @@ const Register = () => {
 
     e.target.reset();
   };
+
+  logOut();
 
   return (
     <div className=" w-[80%] mx-auto items-center justify-center">
