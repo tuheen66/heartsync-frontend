@@ -48,6 +48,9 @@ const Dashboard = () => {
               <li>
                 <NavLink to="editBiodata">Edit Biodata</NavLink>
               </li>
+              {/* <li>
+                <NavLink to="newEditBiodata">New Edit Biodata</NavLink>
+              </li> */}
               <li>
                 <NavLink to="viewBiodata">View Biodata</NavLink>
               </li>

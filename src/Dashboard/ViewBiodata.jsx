@@ -35,10 +35,8 @@ const ViewBiodata = () => {
     email: biodata.email,
   };
 
- 
-
   const handleBiodataPremiumRequest = (biodata) => {
-    axiosPublic.patch(`/biodata/premium/${biodata._id}`).then((res) => {
+    axiosPublic.patch(`/prem-biodata/premium/${biodata._id}`).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount > 0) {
         refetch();
@@ -243,10 +241,19 @@ const ViewBiodata = () => {
                   </tr>
                 </tbody>
               </table>
+
+              {biodata.status === "premium" && (
+                <p className=" mt-6 ml-6 font-semibold text-green-800 text-xl">
+                  {" "}
+                  ** Your Biodata is Premium **
+                </p>
+              )}
               <div className="px-6">
                 <button
                   onClick={() => handleBiodataPremiumRequest(biodata)}
-                  className="bg-[#a9106b] text-white px-4 py-2 mt-12 "
+                  className={`bg-[#a9106b] text-white px-4 py-2 mt-12 ${
+                    biodata.status === "premium" && "invisible"
+                  }`}
                 >
                   Make Biodata to Premium
                 </button>

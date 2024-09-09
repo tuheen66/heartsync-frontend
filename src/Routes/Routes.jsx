@@ -21,6 +21,7 @@ import AppContactReq from "../Dashboard/AdminHome/AppContactReq";
 import NewBiodatas from "../Pages/Biodatas/NewBiodatas";
 import GotMarried from "../Dashboard/GotMarried";
 import SuccessStory from "../Dashboard/AdminHome/SuccessStory";
+import NewEditBiodata from "../Dashboard/NewEditBiodata";
 
 export const router = createBrowserRouter([
   {
@@ -104,13 +105,17 @@ export const router = createBrowserRouter([
       },
       {
         path: "successStory",
-        element: <SuccessStory></SuccessStory>
+        element: <SuccessStory></SuccessStory>,
       },
 
       // regular user routes
       {
         path: "editBiodata",
         element: <EditBiodata></EditBiodata>,
+      },
+      {
+        path: "newEditBiodata",
+        element: <NewEditBiodata></NewEditBiodata>,
       },
       {
         path: "viewBiodata",

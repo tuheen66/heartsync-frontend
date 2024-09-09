@@ -60,9 +60,9 @@ const Register = () => {
       });
 
     e.target.reset();
-  };
 
-  logOut();
+    logOut();
+  };
 
   return (
     <div className=" w-[80%] mx-auto items-center justify-center">
