@@ -28,7 +28,7 @@ const SuccessStory = () => {
       <h2 className="text-center text-3xl font-bold text-gray-700 my-8">
        All The Success Stories
       </h2>
-        <table className="w-1/2 mx-auto text-sm text-left rtl:text-right text-gray-600 dark:text-gray-400">
+        <table className="lg:w-1/2 mx-auto text-sm text-left rtl:text-right text-gray-600 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-pink-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
@@ -66,9 +66,9 @@ const SuccessStory = () => {
         </table>
 
         <div>
-          <Button onClick={() => setOpenModal(true)}>Toggle modal</Button>
+          
           <Modal
-            className="w-1/2 mx-auto"
+            className="lg:w-1/2 mx-auto"
             show={openModal}
             onClose={() => setOpenModal(false)}
           >
@@ -82,7 +82,7 @@ const SuccessStory = () => {
                 </p>
               </div>
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer >
               <Button
                 className=" px-2 rounded-none border-none bg-[#a9106b] hover:bg-[#30336b] text-white mt-6"
                 onClick={() => setOpenModal(false)}

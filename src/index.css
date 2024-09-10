@@ -8,3 +8,7 @@
 .font-raleway{
     font-family: "Raleway", sans-serif;
 }
+
+.recharts-legend-wrapper{
+    width: 100px;
+}

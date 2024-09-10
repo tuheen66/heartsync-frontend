@@ -36,7 +36,7 @@ const AppContactReq = () => {
 
   return (
     <div>
-      <h2>app Contact req</h2>
+      <h2 className="text-center font-bold text-3xl text-gray-600 my-12">Approve Contact Request</h2>
       <div>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

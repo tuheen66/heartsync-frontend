@@ -50,7 +50,7 @@ const GotMarried = () => {
       </h2>
       <form
         onSubmit={handleMarriageInfo}
-        className=" w-[50%] mx-auto bg-blue-300 p-4"
+        className=" lg:w-[50%] mx-auto bg-blue-300 p-4"
       >
         <div className="flex justify-between">
           <div className="mb-5">

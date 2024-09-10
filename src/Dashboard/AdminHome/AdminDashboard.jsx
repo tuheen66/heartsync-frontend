@@ -46,7 +46,7 @@ const AdminDashboard = () => {
     { name: "Total Fees", value: totalFees },
   ];
 
-  const COLORS = ["#0088FE","#9b59b6", "#00C49F", "#ffa801", "#FF8042" ];
+  const COLORS = ["#0088FE", "#9b59b6", "#00C49F", "#ffa801", "#FF8042"];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
@@ -80,7 +80,7 @@ const AdminDashboard = () => {
         <title>Heartsync | Admin Dashboard</title>
       </Helmet>
 
-      <div className="grid grid-cols-2 gap-8 mx-auto w-[95%] border-2 mt-8 justify-center">
+      <div className="grid md:grid-cols-2 gap-8 mx-auto w-[95%] border-2 mt-8 justify-center">
         <div className="  border-2 border-blue-500 rounded-lg text-center p-4 bg-blue-300">
           <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
             Total No of Biodata
@@ -101,7 +101,9 @@ const AdminDashboard = () => {
             <div className="text-5xl text-[#9b59b6]">
               <FaRegAddressBook></FaRegAddressBook>
             </div>
-            <p className="text-5xl font-bold text-[#9b59b6]">{premiumBiodata}</p>
+            <p className="text-5xl font-bold text-[#9b59b6]">
+              {premiumBiodata}
+            </p>
           </div>
         </div>
 
@@ -143,27 +145,29 @@ const AdminDashboard = () => {
           <p className="text-6xl font-bold text-[#FF8042] ">{totalFees}</p>
         </div>
       </div>
-      <div className="my-12 flex justify-center">
-        <PieChart width={600} height={300}>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={120}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-          <Legend></Legend>
-        </PieChart>
+      <div className="my-8 flex justify-center w-[100%] h-[400px] ">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart width={400} height={400}>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={120}
+              fill="#8884d8"
+              dataKey="value"
+            >
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Legend style={{ width: "100px", position: "static" }}></Legend>
+          </PieChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );

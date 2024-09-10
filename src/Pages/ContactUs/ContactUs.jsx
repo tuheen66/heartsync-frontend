@@ -14,12 +14,12 @@ const ContactUs = () => {
         <title>Heartsync | Contact Us</title>
       </Helmet>
       <div
-        className="mx-auto min-h-screen w-[90%] bg-cover bg-center"
+        className="mx-auto w-[90%] min-h-screen bg-cover  bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bannerImg})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bannerImg})`, 
         }}
       >
-        <h2 className="text-5xl text-center font-bold text-white items-center py-72">
+        <h2 className="text-4xl lg:text-5xl text-center font-bold text-white items-center py-52 lg:py-72">
           Contact Us
         </h2>
       </div>
@@ -37,7 +37,7 @@ const ContactUs = () => {
           ></iframe>
         </div>
       </div>
-      <div className="flex w-[90%] mx-auto gap-8 my-8">
+      <div className="flex flex-col lg:flex-row w-[90%] mx-auto gap-8 my-8">
         <div className="flex-1 ">
           <div className="my-20 flex flex-col lg:flex-row gap-8 justify-center items-center">
             <div className="space-y-12 ">

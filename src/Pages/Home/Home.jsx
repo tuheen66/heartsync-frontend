@@ -32,6 +32,11 @@ const Home = () => {
 
   const displayPremBiodata = premiumBiodatas.slice(0, 6);
 
+
+
+
+  
+
   return (
     <div className="w-[90%] mx-auto">
       <Helmet>
@@ -39,7 +44,7 @@ const Home = () => {
       </Helmet>
       <Banner></Banner>
       <section className="my-12">
-        <div className="flex items-center gap-56">
+        <div className="flex  flex-col-reverse lg:flex-row items-center lg:gap-56">
           <form>
             <label
               htmlFor="sorting"
@@ -63,7 +68,7 @@ const Home = () => {
             Premium member profile cards
           </h2>
         </div>
-        <div className="grid grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-3 gap-12">
           {displayPremBiodata.map((biodata) => (
             <PremiumMemberCard
               key={biodata._id}

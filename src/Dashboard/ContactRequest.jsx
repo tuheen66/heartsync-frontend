@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const ContactRequest = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
 
-  const { data: requestedContacts = [] } = useQuery({
+  const { data: requestedContacts = [], refetch } = useQuery({
     queryKey: ["requestedContacts", user?.email],
     queryFn: async () => {
       const res = await axiosPublic.get(
@@ -15,6 +16,31 @@ const ContactRequest = () => {
       return res.data;
     },
   });
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPublic.delete(`/contacts-request/${id}`).then((res) => {
+          refetch();
+          if (res.data.deleteCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your requested biodata has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -40,6 +66,9 @@ const ContactRequest = () => {
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Email
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Action
                 </th>
               </tr>
             </thead>
@@ -73,6 +102,15 @@ const ContactRequest = () => {
                   {item.status === "approved" && (
                     <td className="px-6 py-4">{item.email} </td>
                   )}
+
+                  <td className="px-6 py-4 text-center">
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="bg-[#a9106b] text-white px-2 py-2"
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

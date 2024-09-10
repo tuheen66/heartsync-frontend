@@ -18,10 +18,10 @@ import AdminRoute from "./AdminRoute";
 import Checkout from "../Pages/Checkout/Checkout";
 import ContactRequest from "../Dashboard/ContactRequest";
 import AppContactReq from "../Dashboard/AdminHome/AppContactReq";
-import NewBiodatas from "../Pages/Biodatas/NewBiodatas";
 import GotMarried from "../Dashboard/GotMarried";
 import SuccessStory from "../Dashboard/AdminHome/SuccessStory";
 import NewEditBiodata from "../Dashboard/NewEditBiodata";
+import AboutUs from "../Pages/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -44,17 +44,17 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
+      },
 
       {
         path: "/biodatas",
         element: <Biodatas></Biodatas>,
         loader: () => fetch("http://localhost:5000/biodataCount"),
       },
-      // {
-      //   path: "/new-biodatas",
-      //   element: <NewBiodatas></NewBiodatas>,
-      //   loader: () => fetch("http://localhost:5000/biodataCount"),
-      // },
+
       {
         path: "/biodata-details/:id",
         element: (
@@ -101,7 +101,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "appContactReq",
-        element: <AppContactReq></AppContactReq>,
+        element: (
+          <AdminRoute>
+            <AppContactReq></AppContactReq>,
+          </AdminRoute>
+        ),
       },
       {
         path: "successStory",

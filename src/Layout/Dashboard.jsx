@@ -13,11 +13,11 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="w-[90%] mx-auto flex">
+    <div className="w-[90%] mx-auto flex flex-col lg:flex-row">
       <Helmet>
         <title>Heartsync | Dashboard</title>
       </Helmet>
-      <div className="w-64 min-h-screen bg-purple-300 flex flex-col gap-6 p-4 font-semibold text-gray-700">
+      <div className="lg:w-64 min-h-screen bg-purple-300 flex flex-col gap-6 p-4 font-semibold text-gray-700">
         {isAdmin ? (
           <>
             <h2 className="font-bold text-xl px-4">Admin Home</h2>

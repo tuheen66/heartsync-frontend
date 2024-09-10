@@ -95,9 +95,9 @@ const BiodataDetails = () => {
       <Helmet>
         <title>Heartsync | Detail Biodata</title>
       </Helmet>
-      <div className="w-[60%] mx-auto border-2 border-gray-300 shadow-gray-400 shadow-xl my-4 px-12 py-4">
-        <div className="flex  mt-12 ">
-          <div className=" w-[70%]">
+      <div className="lg:w-[60%] mx-auto border-2 border-gray-300 shadow-gray-400 shadow-xl my-4 px-12 py-4">
+        <div className="flex flex-col-reverse gap-4 md:flex-row mt-12 ">
+          <div className=" md:w-[70%]">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-900 uppercase dark:text-gray-400">
                 <tr>
@@ -297,7 +297,7 @@ const BiodataDetails = () => {
             </table>
           </div>
 
-          <div className="w-[30%] ">
+          <div className="md:w-[30%] ">
             <img className="" src={biodata.photo} alt="" />
           </div>
         </div>
@@ -329,7 +329,7 @@ const BiodataDetails = () => {
         <h2 className="text-center text-3xl font-bold text-gray-600 my-12">
           Some similar biodata you might be interested in
         </h2>
-        <div className="grid grid-cols-3 w-[90%] mx-auto gap-8 ">
+        <div className="grid lg:grid-cols-3 w-[90%] mx-auto gap-8 ">
           {selectedBiodata.map((biodata) => (
             <Biodata key={biodata.biodataId} biodata={biodata}></Biodata>
           ))}

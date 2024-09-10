@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div className="about">
       <div className="flex flex-col gap-4 lg:gap-4 lg:flex-row justify-between items-center w-[90%]  mx-auto bg-purple-300 shadow-xl pb-8 lg:pb-0  px-2 ">
         <div className="flex items-center">
           <img className="w-20 py-2" src={logo} alt="" />
@@ -23,8 +23,7 @@ const Navbar = () => {
           <div className="flex flex-col md:flex-row font-semibold text-gray-700 justify-between items-center gap-2 md:gap-8">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/biodatas">Biodatas</NavLink>
-
-            <NavLink to="/">About Us</NavLink>
+            <NavLink to="/aboutUs">About Us</NavLink>
             <NavLink to="/contactUs">Contact Us</NavLink>
             {user && <NavLink to="dashboard">Dashboard</NavLink>}
           </div>

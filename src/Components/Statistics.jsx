@@ -34,7 +34,7 @@ const Statistics = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-4 gap-8 mx-auto  border-2 mt-8 justify-center">
+      <div className="grid lg:grid-cols-4 gap-8 mx-auto  border-2 mt-8 justify-center">
         <div className="  border-2 border-blue-500  text-center p-4 bg-blue-300">
           <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
             Total No of Biodata
