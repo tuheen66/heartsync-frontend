@@ -1,6 +1,12 @@
-# React + Vite
+# Website name : Heartsync
+
+# admin email = hassan.monirul@gmail.com
+
+# admin password = 123456
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+#
 
 Currently, two official plugins are available:
 

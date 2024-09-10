@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router-dom";
 import { paginationClasses } from "@mui/material";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-import bannerImg from "./../../assets/images/biodata.jpg"
+import bannerImg from "./../../assets/images/biodata.jpg";
 
 const Biodatas = () => {
   const axiosPublic = useAxiosPublic();
@@ -83,15 +83,17 @@ const Biodatas = () => {
 
   return (
     <div>
-<div
-        className="mx-auto min-h-screen w-[90%] bg- bg-center"
+      <div
+        className="mx-auto min-h-[200px] md:min-h-[300px] lg:min-h-[450px] w-[90%] bg-cover bg-center"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bannerImg})`,
         }}
       >
-        <h2 className="text-4xl lg:text-5xl text-center font-bold text-white items-center py-52 lg:py-72">
-          Biodata
-        </h2>
+        <div className="flex justify-center ">
+          <h2 className=" text-3xl md:text-4xl lg:text-5xl text-center font-bold text-white items-center my-20 md:my-40 lg:my-52">
+            Biodatas
+          </h2>
+        </div>
       </div>
 
       <div className="w-[90%] mx-auto my-12">

@@ -13,15 +13,18 @@ const ContactUs = () => {
       <Helmet>
         <title>Heartsync | Contact Us</title>
       </Helmet>
+
       <div
-        className="mx-auto w-[90%] min-h-screen bg-cover  bg-center"
+        className="mx-auto min-h-[200px] md:min-h-[300px] lg:min-h-[450px] w-[90%] bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bannerImg})`, 
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bannerImg})`,
         }}
       >
-        <h2 className="text-4xl lg:text-5xl text-center font-bold text-white items-center py-52 lg:py-72">
-          Contact Us
-        </h2>
+        <div className="flex justify-center ">
+          <h2 className=" text-3xl md:text-4xl lg:text-5xl text-center font-bold text-white items-center my-20 md:my-40 lg:my-52">
+            Contact Us
+          </h2>
+        </div>
       </div>
       <div>
         <div className="w-[90%] mx-auto my-12 shadow-xl shadow-gray-600">
