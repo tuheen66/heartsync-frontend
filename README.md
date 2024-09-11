@@ -4,6 +4,10 @@
 
 # admin password = 123456
 
+# live site URL :
+
+#
+
 Some important features:
 
 1. Any user can come and visit our site and see the Home page,
@@ -16,4 +20,4 @@ Some important features:
 8. Users can also make any biodata as their favorite and those are displayed in personal dashboard.
 9. Users can delete favorite biodata or contact request from the list from their dashboard if they want.
 10. Couples who got married through this website can share their success stories which are displayed in the home page.
-11. Any users can see number of biodatas, male biodata, female biodata and number of success stories in the hme page. They can also see how the website works in "how it works" section.
+11. Any users can see number of biodatas, male biodata, female biodata and number of success stories in the home page. They can also see how the website works in "how it works" section.

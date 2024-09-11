@@ -21,7 +21,8 @@ import AppContactReq from "../Dashboard/AdminHome/AppContactReq";
 import GotMarried from "../Dashboard/GotMarried";
 import SuccessStory from "../Dashboard/AdminHome/SuccessStory";
 import NewEditBiodata from "../Dashboard/NewEditBiodata";
-import AboutUs from "../Pages/AboutUs";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+
 
 export const router = createBrowserRouter([
   {
@@ -44,9 +45,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      
       {
         path: "/aboutUs",
-        element: <AboutUs></AboutUs>,
+        element: <AboutUs></AboutUs>
       },
 
       {

@@ -32,11 +32,6 @@ const Home = () => {
 
   const displayPremBiodata = premiumBiodatas.slice(0, 6);
 
-
-
-
-  
-
   return (
     <div className="w-[90%] mx-auto">
       <Helmet>
@@ -58,7 +53,6 @@ const Home = () => {
               name="sorting"
               className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option value="Sort">Select</option>
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
             </select>
@@ -79,7 +73,9 @@ const Home = () => {
       </section>
 
       <section>
-        <h2 className="font-bold text-3xl text-center text-gray-700 mb-4 ">How it works:</h2>
+        <h2 className="font-bold text-3xl text-center text-gray-700 mb-4 ">
+          How it works:
+        </h2>
         <HowItWorks></HowItWorks>
       </section>
 
@@ -91,9 +87,9 @@ const Home = () => {
       </section>
 
       <section className="my-4">
-          <h2 className="font-bold text-3xl text-center text-gray-700 mb-4">
-            Success Story
-          </h2>
+        <h2 className="font-bold text-3xl text-center text-gray-700 mb-4">
+          Success Story
+        </h2>
         <div className="bg-pink-200 p-4">
           <ReviewCard></ReviewCard>
         </div>

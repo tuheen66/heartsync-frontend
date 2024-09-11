@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ContactRequest = () => {
   const axiosPublic = useAxiosPublic();
@@ -43,7 +44,10 @@ const ContactRequest = () => {
   };
 
   return (
-    <div>
+    <div className="mb-12">
+       <Helmet>
+        <title>Heartsync | Contact Request</title>
+      </Helmet>
       <h2 className="text-center text-3xl text-gray-600 font-bold mb-12 mt-16">
         My Contact Requests
       </h2>

@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AppContactReq = () => {
   const axiosPublic = useAxiosPublic();
@@ -36,6 +37,9 @@ const AppContactReq = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>Heartsync | Approve Contact Request</title>
+      </Helmet>
       <h2 className="text-center font-bold text-3xl text-gray-600 my-12">Approve Contact Request</h2>
       <div>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

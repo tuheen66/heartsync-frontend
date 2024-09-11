@@ -119,9 +119,9 @@ const CheckoutForm = ({ biodata }) => {
   };
 
   return (
-    <div className="mb-16 mx-auto w-[50%] bg-blue-300 p-8">
+    <div className="mb-16 mx-auto lg:w-[50%] bg-blue-300 p-8">
       <form onSubmit={handleSubmit}>
-        <div className="flex justify-center gap-20">
+        <div className="flex flex-col md:flex-row justify-center md:gap-20">
           <div className="mb-5 flex-1">
             <label
               htmlFor="email"

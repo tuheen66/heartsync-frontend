@@ -21,19 +21,30 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    signIn(email, password).then((result) => {
-      const user = result.user;
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
 
-      navigate(from, { replace: true });
+        navigate(from, { replace: true });
 
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Login successful",
-        showConfirmButton: false,
-        timer: 1500,
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.log("firebase", error);
+
+        Swal.fire({
+          title: "Ooops!",
+          text: "Please provide valid email and correct password",
+          icon: "error",
+          confirmButtonText: "Oh no!",
+        });
       });
-    });
   };
 
   return (

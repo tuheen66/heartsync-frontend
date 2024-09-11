@@ -4,6 +4,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const EditBiodata = () => {
   const { user } = useAuth();
@@ -88,6 +89,9 @@ const EditBiodata = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>Heartsync | Edit Biodata</title>
+      </Helmet>
       <h2 className="text-4xl font-semibold text-center my-8">
         Create / Edit Biodata
       </h2>

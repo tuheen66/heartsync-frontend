@@ -21,7 +21,7 @@ import slider3 from "../assets/images/banner03.jpg";
 
 const Banner = () => {
   return (
-    <div >
+    <div className="min-h-[400px]">
       <Swiper
         className="mySwiper "
         // install Swiper modules

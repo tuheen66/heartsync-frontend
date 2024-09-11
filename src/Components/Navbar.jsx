@@ -42,7 +42,8 @@ const Navbar = () => {
             {user ? (
               <div className="flex items-center gap-4">
                 <div className=" relative group ">
-                  <img className="w-14 rounded-full  " src={user?.photoURL} />
+                  <h2 className="font-semibold">{user?.displayName}</h2>
+                  {/* <img className="w-14 rounded-full  " src={user?.photoURL} /> */}
 
                   <p className="opacity-0 group-hover:opacity-100 absolute w-44 text-center -bottom-4 right-16 text-xl text-gray-700 bg-gray-200 font-semibold"></p>
                 </div>

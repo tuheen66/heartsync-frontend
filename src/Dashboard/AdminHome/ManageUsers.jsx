@@ -47,7 +47,7 @@ const ManageUsers = () => {
   };
 
   return (
-    <div>
+    <div className="mb-8">
       <Helmet>
         <title>Heartsync | Manage Users</title>
       </Helmet>

@@ -3,6 +3,7 @@ import useAuth from "../hooks/useAuth";
 
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ViewBiodata = () => {
   const { user } = useAuth();
@@ -67,6 +68,9 @@ const ViewBiodata = () => {
 
   return (
     <div className="mb-12">
+       <Helmet>
+        <title>Heartsync | View Biodata</title>
+      </Helmet>
       <h2 className="text-4xl font-bold text-center w-3/4 mx-auto my-12">
         Biodata of {biodata.name}
       </h2>

@@ -57,6 +57,12 @@ const Register = () => {
       })
       .catch((error) => {
         console.error(error);
+        Swal.fire({
+          title: " Oops!",
+          text: " Your password must be at least 6 characters long",
+          icon: "error",
+          button: "oh no!",
+        });
       });
 
     e.target.reset();

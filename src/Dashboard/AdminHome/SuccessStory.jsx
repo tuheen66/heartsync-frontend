@@ -2,6 +2,7 @@ import useAxiosSecure from "./../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const SuccessStory = () => {
   const axiosSecure = useAxiosSecure();
@@ -23,11 +24,14 @@ const SuccessStory = () => {
   };
 
   return (
-    <div>
+    <div className="mb-8">
+       <Helmet>
+        <title>Heartsync | Success Story</title>
+      </Helmet>
       <div className="relative overflow-x-auto">
-      <h2 className="text-center text-3xl font-bold text-gray-700 my-8">
-       All The Success Stories
-      </h2>
+        <h2 className="text-center text-3xl font-bold text-gray-700 my-8">
+          All The Success Stories
+        </h2>
         <table className="lg:w-1/2 mx-auto text-sm text-left rtl:text-right text-gray-600 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-pink-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -66,7 +70,6 @@ const SuccessStory = () => {
         </table>
 
         <div>
-          
           <Modal
             className="lg:w-1/2 mx-auto"
             show={openModal}
@@ -82,8 +85,8 @@ const SuccessStory = () => {
                 </p>
               </div>
             </Modal.Body>
-            <Modal.Footer >
-              <Button
+            <Modal.Footer>
+              <Button 
                 className=" px-2 rounded-none border-none bg-[#a9106b] hover:bg-[#30336b] text-white mt-6"
                 onClick={() => setOpenModal(false)}
               >

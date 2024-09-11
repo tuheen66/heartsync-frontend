@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Rating } from "@smastrom/react-rating";
-import '@smastrom/react-rating/style.css'
+import "@smastrom/react-rating/style.css";
+import "swiper/css/autoplay";
 
 const ReviewCard = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,7 +25,13 @@ const ReviewCard = () => {
 
   return (
     <div className="my-8  mx-auto">
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper ">
+      <Swiper
+        navigation={true}
+        loop="true"
+        autoplay
+        modules={[Navigation, Autoplay]}
+        className="mySwiper "
+      >
         {marriage.map((item) => (
           <SwiperSlide key={item._id} className="px-12">
             <div className="flex justify-center gap-8 mb-4">

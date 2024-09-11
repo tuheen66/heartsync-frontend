@@ -7,6 +7,7 @@ import { paginationClasses } from "@mui/material";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import bannerImg from "./../../assets/images/biodata.jpg";
+import { Helmet } from "react-helmet-async";
 
 const Biodatas = () => {
   const axiosPublic = useAxiosPublic();
@@ -83,6 +84,9 @@ const Biodatas = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>Heartsync | Biodata</title>
+      </Helmet>
       <div
         className="mx-auto min-h-[200px] md:min-h-[300px] lg:min-h-[450px] w-[90%] bg-cover bg-center"
         style={{

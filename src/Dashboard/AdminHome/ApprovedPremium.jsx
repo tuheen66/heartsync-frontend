@@ -45,7 +45,7 @@ const ApprovedPremium = () => {
   };
 
   return (
-    <div>
+    <div className="mb-8">
       <Helmet>
         <title>Heartsync | Approved Premium</title>
       </Helmet>

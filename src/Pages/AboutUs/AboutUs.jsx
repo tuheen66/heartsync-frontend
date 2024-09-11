@@ -1,9 +1,13 @@
-import "./AboutUsCss/AboutUs.css";
-import bannerImg from "./../assets/images/about.jpg";
+import "./../AboutUsCss/AboutUs.css";
+import bannerImg from "./../../assets/images/about.jpg";
+import { Helmet } from "react-helmet-async";
 
 const AboutUs = () => {
   return (
     <div>
+      <Helmet>
+        <title>Heartsync | About Us</title>
+      </Helmet>
       <div
         className="mx-auto min-h-[200px] md:min-h-[300px] lg:min-h-[450px] w-[90%] bg-cover bg-center"
         style={{

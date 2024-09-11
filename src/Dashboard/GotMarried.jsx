@@ -1,6 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const GotMarried = () => {
   const axiosSecure = useAxiosSecure();
@@ -45,6 +46,9 @@ const GotMarried = () => {
 
   return (
     <div className="mb-8">
+       <Helmet>
+        <title>Heartsync | Got Married</title>
+      </Helmet>
       <h2 className="text-center text-3xl font-bold text-gray-700 my-8">
         Please share your marriage info
       </h2>

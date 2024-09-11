@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "./../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const FavoriteBiodata = () => {
   const axiosPublic = useAxiosPublic();
@@ -41,7 +42,10 @@ const FavoriteBiodata = () => {
   };
 
   return (
-    <div>
+    <div className="mb-12">
+       <Helmet>
+        <title>Heartsync | Favorite Biodata</title>
+      </Helmet>
       <h2 className="text-center font-bold text-3xl text-gray-600 my-12">
         My Favorite Biodatas : {favBiodatas.length}
       </h2>
