@@ -39,7 +39,7 @@ const CheckoutForm = ({ biodata }) => {
       return;
     }
 
-    console.log(card)
+    
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",

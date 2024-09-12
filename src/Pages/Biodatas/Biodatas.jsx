@@ -38,7 +38,7 @@ const Biodatas = () => {
     }
   };
 
-  console.log(pages);
+
 
   const { data: biodatas = [], refetch } = useQuery({
     queryKey: [
@@ -66,7 +66,7 @@ const Biodatas = () => {
     },
   });
 
-  console.log(count);
+
 
   const handleSearch = (e) => {
     e.preventDefault();

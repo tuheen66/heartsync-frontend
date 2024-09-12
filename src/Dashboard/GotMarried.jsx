@@ -27,7 +27,7 @@ const GotMarried = () => {
       rating
     };
 
-    console.log(marriageInfo);
+    
 
     axiosSecure.patch("/marriage", marriageInfo).then((res) => {
       console.log(res.data);
