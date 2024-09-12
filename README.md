@@ -4,7 +4,7 @@
 
 # admin password = 123456
 
-# live site URL :
+# live site URL : https://heartsync-5b928.web.app
 
 #
 
