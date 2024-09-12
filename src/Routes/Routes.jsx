@@ -20,9 +20,7 @@ import ContactRequest from "../Dashboard/ContactRequest";
 import AppContactReq from "../Dashboard/AdminHome/AppContactReq";
 import GotMarried from "../Dashboard/GotMarried";
 import SuccessStory from "../Dashboard/AdminHome/SuccessStory";
-import NewEditBiodata from "../Dashboard/NewEditBiodata";
 import AboutUs from "../Pages/AboutUs/AboutUs";
-
 
 export const router = createBrowserRouter([
   {
@@ -45,10 +43,10 @@ export const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
-      
+
       {
         path: "/aboutUs",
-        element: <AboutUs></AboutUs>
+        element: <AboutUs></AboutUs>,
       },
 
       {
@@ -119,10 +117,7 @@ export const router = createBrowserRouter([
         path: "editBiodata",
         element: <EditBiodata></EditBiodata>,
       },
-      {
-        path: "newEditBiodata",
-        element: <NewEditBiodata></NewEditBiodata>,
-      },
+
       {
         path: "viewBiodata",
         element: <ViewBiodata></ViewBiodata>,

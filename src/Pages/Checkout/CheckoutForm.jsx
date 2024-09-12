@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 // import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const CheckoutForm = ({ biodata }) => {
@@ -38,6 +39,8 @@ const CheckoutForm = ({ biodata }) => {
       return;
     }
 
+    console.log(card)
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
@@ -64,6 +67,7 @@ const CheckoutForm = ({ biodata }) => {
 
     if (confirmError) {
       console.log("confirm Error");
+      return;
     } else {
       console.log("payment intent", paymentIntent);
       if (paymentIntent.status === "succeeded") {

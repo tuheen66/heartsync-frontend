@@ -33,10 +33,6 @@ const BiodataDetails = () => {
 
   const currentUser = premEmails.includes(user.email);
 
-  console.log(premUsers);
-  console.log(premEmails);
-  console.log(user);
-
   const birthDate = biodata.birth_date;
   const date = new Date(birthDate);
 
@@ -55,21 +51,32 @@ const BiodataDetails = () => {
         email: user.email,
       };
 
-      axiosPublic.post("/favorite", favoriteBio).then((res) => {
-        if (res.data.insertedId) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "The Biodata has been added to your favorite list",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
-      });
+      axiosPublic
+        .post("/favorites", favoriteBio)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "The Biodata has been added to your favorite list",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          } else if (res.data.insertedId === null) {
+            Swal.fire({
+              title: "Ooops!",
+              text: "Biodata already added to the favorite list'",
+              icon: "error",
+              confirmButtonText: "OK!",
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
-
-  
 
   const { data: similar = [] } = useQuery({
     queryKey: ["similar"],
@@ -312,10 +319,7 @@ const BiodataDetails = () => {
           </Link>
           {!currentUser && (
             <Link to={`/dashboard/checkout/${biodata._id}`}>
-              <button
-              
-                className="bg-[#a9106b] text-white px-4 py-2 my-4"
-              >
+              <button className="bg-[#a9106b] text-white px-4 py-2 my-4">
                 Request Contact Information
               </button>{" "}
             </Link>

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProviders";
 import { updateProfile } from "firebase/auth";
@@ -11,6 +11,8 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 const Register = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const { createUser, logOut } = useContext(AuthContext);
 
@@ -43,17 +45,18 @@ const Register = () => {
             console.log(res.data);
             if (res.data.insertedId) {
               Swal.fire({
-                title: "success!",
-                text: "You have been registered successfully",
+                position: "top-end",
                 icon: "success",
-                confirmButtonText: "Cool",
+                title: "Registration successful",
+                showConfirmButton: false,
+                timer: 1500,
               });
               navigate(from, { replace: true });
             }
           });
         });
 
-        navigate("/login");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
@@ -66,8 +69,7 @@ const Register = () => {
       });
 
     e.target.reset();
-
-    logOut();
+    
   };
 
   return (

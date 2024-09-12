@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Rating } from "@smastrom/react-rating";
@@ -17,19 +17,12 @@ const ReviewCard = () => {
     },
   });
 
-  //   const dateString = item.marriage_date;
-  //   const date = new Date(dateString);
-  //  const formattedDate = `${String((new Date(item.marriage_date)).getDate()).padStart(2, "0")}-${String(
-  //      (new Date(item.marriage_date)).getMonth() + 1
-  //    ).padStart(2, "0")}-${(new Date(item.marriage_date;)).getFullYear()}`;
-
   return (
     <div className="my-8  mx-auto">
       <Swiper
         navigation={true}
         loop="true"
-        autoplay
-        modules={[Navigation, Autoplay]}
+        modules={[Navigation]}
         className="mySwiper "
       >
         {marriage.map((item) => (

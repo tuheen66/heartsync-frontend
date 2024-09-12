@@ -84,7 +84,7 @@ const Biodatas = () => {
 
   return (
     <div>
-       <Helmet>
+      <Helmet>
         <title>Heartsync | Biodata</title>
       </Helmet>
       <div
@@ -122,7 +122,7 @@ const Biodatas = () => {
                   name="gender"
                   className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
-                  <option value="">Select</option>
+                  <option value="">All</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
@@ -174,7 +174,7 @@ const Biodatas = () => {
                   name="permanentDivision"
                   className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >
-                  <option value="">Select</option>
+                  <option value="">All</option>
                   <option value="Dhaka">Dhaka</option>
                   <option value="Chattagram">Chattagram</option>
                   <option value="Rangpur">Rangpur</option>
@@ -217,7 +217,7 @@ const Biodatas = () => {
               }`}
               key={paginationClasses}
             >
-              {page}
+              {page + 1}
             </button>
           ))}
           <button

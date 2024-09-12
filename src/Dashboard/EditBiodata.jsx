@@ -89,7 +89,7 @@ const EditBiodata = () => {
 
   return (
     <div>
-       <Helmet>
+      <Helmet>
         <title>Heartsync | Edit Biodata</title>
       </Helmet>
       <h2 className="text-4xl font-semibold text-center my-8">
@@ -180,18 +180,6 @@ const EditBiodata = () => {
                 Birth Date
               </label>
             </div>
-
-            {/* <div>
-              <label className="text-gray-500">Date of Birth</label>
-              <br />
-              <DatePicker
-                
-                showIcon
-                selected={birthDate}
-                onChange={(date) => setBirthDate(date)}
-                dateFormat="dd/MM/yyyy"
-              />
-            </div> */}
           </div>
 
           {/* heigh and weight */}

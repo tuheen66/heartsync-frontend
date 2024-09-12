@@ -45,7 +45,7 @@ const ContactRequest = () => {
 
   return (
     <div className="mb-12">
-       <Helmet>
+      <Helmet>
         <title>Heartsync | Contact Request</title>
       </Helmet>
       <h2 className="text-center text-3xl text-gray-600 font-bold mb-12 mt-16">
@@ -63,16 +63,16 @@ const ContactRequest = () => {
                   Biodata Id
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Contact Request
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Phone
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Email
+                  Status
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Action
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Mobile No
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Email
                 </th>
               </tr>
             </thead>
@@ -99,15 +99,7 @@ const ContactRequest = () => {
                       {item.status}
                     </a>
                   </td>
-
-                  {item.status === "approved" && (
-                    <td className="px-6 py-4">{item.phone} </td>
-                  )}
-                  {item.status === "approved" && (
-                    <td className="px-6 py-4">{item.email} </td>
-                  )}
-
-                  <td className="px-6 py-4 text-center">
+                  <td className="px-6 py-4 ">
                     <button
                       onClick={() => handleDelete(item._id)}
                       className="bg-[#a9106b] text-white px-2 py-2"
@@ -115,6 +107,13 @@ const ContactRequest = () => {
                       Delete
                     </button>
                   </td>
+
+                  {item.status === "approved" && (
+                    <td className="px-6 py-4">{item.phone} </td>
+                  )}
+                  {item.status === "approved" && (
+                    <td className="px-6 py-4">{item.email} </td>
+                  )}
                 </tr>
               ))}
             </tbody>
