@@ -2,15 +2,33 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useFormState } from "react-hook-form";
 
 const Dashboard = () => {
+  const axiosSecure = useAxiosSecure();
   const [isAdmin] = useAdmin();
 
-  const { logOut } = useAuth();
+  const { logOut, user } = useAuth();
 
   const handleLogout = () => {
     logOut().then(() => console.log("logged out successfully "));
   };
+
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users");
+      return res.data;
+    },
+  });
+
+  const admin = users.filter((user) => user.role === "admin");
+
+  const adminUser = admin.map((user) => user.email);
+
+  console.log(admin);
 
   return (
     <div className="w-[90%] mx-auto flex flex-col lg:flex-row">
@@ -23,7 +41,9 @@ const Dashboard = () => {
             <h2 className="font-bold text-xl px-4">Admin Home</h2>
             <ul className="flex flex-col gap-6 px-4">
               <li>
-                <NavLink to="/dashboard/adminDashboard">Admin Dashboard</NavLink>
+                <NavLink to="/dashboard/adminDashboard">
+                  Admin Dashboard
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manage">Manage Users</NavLink>
@@ -77,6 +97,13 @@ const Dashboard = () => {
       </div>
       <div className="flex-1">
         <Outlet></Outlet>
+        <div className="min-h-screen">
+          <h2 className="font-bold text-5xl text-center text-gray-700 my-52 uppercase ">
+            {adminUser.includes(user.email)
+              ? "Admin dashboard home "
+              : "User dashboard home"}
+          </h2>
+        </div>
       </div>
     </div>
   );
