@@ -23,7 +23,7 @@ const Dashboard = () => {
             <h2 className="font-bold text-xl px-4">Admin Home</h2>
             <ul className="flex flex-col gap-6 px-4">
               <li>
-                <NavLink to="adminDashboard">Admin Dashboard</NavLink>
+                <NavLink to="/dashboard/adminDashboard">Admin Dashboard</NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manage">Manage Users</NavLink>
@@ -46,11 +46,9 @@ const Dashboard = () => {
             <h2 className="font-bold text-xl px-4">User Home</h2>
             <ul className="flex flex-col gap-6 px-4">
               <li>
-                <NavLink to="editBiodata">Edit Biodata</NavLink>
+                <NavLink to="/dashboard/editBiodata">Edit Biodata</NavLink>
               </li>
-              {/* <li>
-                <NavLink to="newEditBiodata">New Edit Biodata</NavLink>
-              </li> */}
+
               <li>
                 <NavLink to="viewBiodata">View Biodata</NavLink>
               </li>
