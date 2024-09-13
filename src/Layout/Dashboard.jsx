@@ -25,10 +25,9 @@ const Dashboard = () => {
   });
 
   const admin = users.filter((user) => user.role === "admin");
-
   const adminUser = admin.map((user) => user.email);
 
-  console.log(admin);
+ 
 
   return (
     <div className="w-[90%] mx-auto flex flex-col lg:flex-row">
