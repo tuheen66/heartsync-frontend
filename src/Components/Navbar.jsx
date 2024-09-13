@@ -2,9 +2,22 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProviders";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
+  const { data: users = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users");
+      return res.data;
+    },
+  });
+  const admin = users.filter((user) => user.role === "admin");
+
+  const adminUser = admin.map((user) => user.email);
 
   const handleLogout = () => {
     logOut().then(() => console.log("logged out successfully "));
@@ -25,7 +38,17 @@ const Navbar = () => {
             <NavLink to="/biodatas">Biodatas</NavLink>
             <NavLink to="/aboutUs">About Us</NavLink>
             <NavLink to="/contactUs">Contact Us</NavLink>
-            {user && <NavLink to="dashboard">Dashboard</NavLink>}
+            {user && (
+              <NavLink
+                to={
+                  adminUser.includes(user.email)
+                    ? "/dashboard/adminDashboard/"
+                    : "/dashboard/editBiodata"
+                }
+              >
+                Dashboard
+              </NavLink>
+            )}
           </div>
         </div>
 

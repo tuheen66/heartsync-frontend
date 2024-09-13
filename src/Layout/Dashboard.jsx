@@ -56,16 +56,16 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <NavLink to="viewBiodata">View Biodata</NavLink>
+                <NavLink to="/dashboard/viewBiodata">View Biodata</NavLink>
               </li>
               <li>
-                <NavLink to="contactRequest">My Contact Request</NavLink>
+                <NavLink to="/dashboard/contactRequest">My Contact Request</NavLink>
               </li>
               <li>
-                <NavLink to="favoriteBiodata">My Favorite Biodata</NavLink>
+                <NavLink to="/dashboard/favoriteBiodata">My Favorite Biodata</NavLink>
               </li>
               <li className="flex">
-                <NavLink to="gotMarried">Got Married </NavLink>
+                <NavLink to="/dashboard/gotMarried">Got Married </NavLink>
               </li>
             </ul>
           </>
