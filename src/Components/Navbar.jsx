@@ -34,10 +34,66 @@ const Navbar = () => {
         </div>
         <div>
           <div className="flex flex-col md:flex-row font-semibold text-gray-700 justify-between items-center gap-2 md:gap-8">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/biodatas">Biodatas</NavLink>
-            <NavLink to="/aboutUs">About Us</NavLink>
-            <NavLink to="/contactUs">Contact Us</NavLink>
+            <NavLink
+              to="/"
+              style={({ isActive, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  backgroundColor: isActive ? "#a9106b" : "",
+                  textDecorationColor: isActive ? "#a9106b" : "none",
+                  color: isActive ? "White" : "#374177",
+                  padding: "2px 6px",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/biodatas"
+              style={({ isActive, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  backgroundColor: isActive ? "#a9106b" : "",
+                  textDecorationColor: isActive ? "#a9106b" : "none",
+                  color: isActive ? "White" : "#374177",
+                  padding: "2px 6px",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              Biodatas
+            </NavLink>
+            <NavLink
+              to="/aboutUs"
+              style={({ isActive, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  backgroundColor: isActive ? "#a9106b" : "",
+                  textDecorationColor: isActive ? "#a9106b" : "none",
+                  color: isActive ? "White" : "#374177",
+                  padding: "2px 6px",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              About Us
+            </NavLink>
+            <NavLink
+              to="/contactUs"
+              style={({ isActive, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  backgroundColor: isActive ? "#a9106b" : "",
+                  textDecorationColor: isActive ? "#a9106b" : "none",
+                  color: isActive ? "White" : "#374177",
+                  padding: "2px 6px",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              Contact Us
+            </NavLink>
             {user && (
               <NavLink
                 to={

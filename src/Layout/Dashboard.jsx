@@ -27,23 +27,89 @@ const Dashboard = () => {
             <h2 className="font-bold text-xl px-4">Admin Home</h2>
             <ul className="flex flex-col gap-6 px-4">
               <li>
-                <NavLink to="/dashboard/adminDashboard">
+                <NavLink
+                  to="/dashboard/adminDashboard"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
                   Admin Dashboard
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manage">Manage Users</NavLink>
+                <NavLink
+                  to="/dashboard/manage"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
+                  Manage Users
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/appPremium">Approved Premium</NavLink>
+                <NavLink
+                  to="/dashboard/appPremium"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
+                  Approved Premium
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/appContactReq">
+                <NavLink
+                  to="/dashboard/appContactReq"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
                   Approved Contact Request
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/successStory">Success Story</NavLink>
+                <NavLink
+                  to="/dashboard/successStory"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
+                  Success Story
+                </NavLink>
               </li>
             </ul>
           </>
@@ -52,20 +118,90 @@ const Dashboard = () => {
             <h2 className="font-bold text-xl px-4">User Home</h2>
             <ul className="flex flex-col gap-6 px-4">
               <li>
-                <NavLink to="/dashboard/editBiodata">Edit Biodata</NavLink>
+                <NavLink
+                  to="/dashboard/editBiodata"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
+                  Edit Biodata
+                </NavLink>
               </li>
 
               <li>
-                <NavLink to="/dashboard/viewBiodata">View Biodata</NavLink>
+                <NavLink
+                  to="/dashboard/viewBiodata"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
+                  View Biodata
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/contactRequest">My Contact Request</NavLink>
+                <NavLink
+                  to="/dashboard/contactRequest"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
+                  My Contact Request
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/favoriteBiodata">My Favorite Biodata</NavLink>
+                <NavLink
+                  to="/dashboard/favoriteBiodata"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
+                  My Favorite Biodata
+                </NavLink>
               </li>
               <li className="flex">
-                <NavLink to="/dashboard/gotMarried">Got Married </NavLink>
+                <NavLink
+                  to="/dashboard/gotMarried"
+                  style={({ isActive, isTransitioning }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      backgroundColor: isActive ? "#a9106b" : "",
+                      textDecorationColor: isActive ? "#a9106b" : "none",
+                      color: isActive ? "White" : "#374177",
+                      padding: "4px 8px",
+                      viewTransitionName: isTransitioning ? "slide" : "",
+                    };
+                  }}
+                >
+                  Got Married{" "}
+                </NavLink>
               </li>
             </ul>
           </>
