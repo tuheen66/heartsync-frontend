@@ -3,12 +3,12 @@ import React from "react";
 const ContactForm = () => {
   return (
     <div>
-      <form className=" flex flex-col space-y-4">
+      <form className=" flex flex-col space-y-4 border-1 border-gray-300">
         <label className="font-bold" htmlFor="name">
           Your name:
         </label>
         <input
-          className="bg-gray-200 py-2 pl-4 w-full rounded-lg"
+          className="bg-slate-100 py-2 pl-4 w-full "
           type="text"
           name=""
           id="name"
@@ -19,7 +19,7 @@ const ContactForm = () => {
           Your email:
         </label>
         <input
-          className="bg-gray-200 py-2 pl-4 w-full rounded-lg"
+          className="bg-slate-100 py-2 pl-4 w-full "
           type="email"
           name=""
           id="email"
@@ -29,7 +29,7 @@ const ContactForm = () => {
           Write to us:
         </label>
         <textarea
-          className="bg-gray-200 py-2 pl-4 w-full rounded-lg"
+          className="bg-slate-100 py-2 pl-4 w-full "
           name=""
           placeholder="Write to us"
           cols="50"
@@ -37,7 +37,7 @@ const ContactForm = () => {
           id="comment"
         ></textarea>
         <input
-          className="bg-[#a9106b] text-white text-lg py-2 rounded-lg"
+          className="bg-[#a9106b] text-white text-lg py-2 "
           type="submit"
           value="Submit"
         />

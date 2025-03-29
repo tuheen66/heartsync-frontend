@@ -1,13 +1,13 @@
-import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
-import Biodata from "../../Components/Biodata";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import LoadingSpinner from "./../../Components/LoadingSpinner";
 import { Helmet } from "react-helmet-async";
+import BiodataCard from "../../Components/BiodataCard";
+import { FaRegHeart } from "react-icons/fa";
 
 const BiodataDetails = () => {
   const biodata = useLoaderData();
@@ -102,221 +102,186 @@ const BiodataDetails = () => {
       <Helmet>
         <title>Heartsync | Detail Biodata</title>
       </Helmet>
-      <div className="lg:w-[60%] mx-auto border-2 border-gray-300 shadow-gray-400 shadow-xl my-4 px-12 py-4">
-        <div className="flex flex-col-reverse gap-4 md:flex-row mt-12 ">
-          <div className=" md:w-[70%]">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-900 uppercase dark:text-gray-400">
-                <tr>
-                  <th scope="col" className=" ">
-                    Name
-                  </th>
-                  <th scope="col" className="px-4">
-                    :
-                  </th>
-                  <th scope="col" className="">
-                    {biodata.name}
-                  </th>
-                </tr>
-                <tr>
-                  <th scope="col" className=" ">
-                    Biodata id
-                  </th>
-                  <th scope="col" className="px-4 py-2">
-                    :
-                  </th>
-                  <th scope="col" className="">
-                    {biodata.biodataId}
-                  </th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className=" py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Biodata Type
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.gender}</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className=" py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Date of Birth
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{formattedDate}</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Age
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.age} yrs</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Height
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.height} ft</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Weight
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.weight} kg</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    class="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Expected Partner Height
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.partner_height} ft</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className=" font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Expected Partner Weight
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.partner_weight} kg</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Expected Partner age
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.partner_age} yrs</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Religion
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.race}</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Father's Name
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.father_name}</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Mother's Name
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.mother_name}</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Permanent Division
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.permanentDivision}</td>
-                </tr>
-
-                <tr className="bg-white dark:bg-gray-800">
-                  <th
-                    scope="row"
-                    className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Present Division
-                  </th>
-                  <td className="px-4">:</td>
-                  <td>{biodata.presentDivision}</td>
-                </tr>
-
-                {currentUser && (
-                  <tr className="bg-white dark:bg-gray-800">
-                    <th
-                      scope="row"
-                      className="py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      Contact Email
-                    </th>
-                    <td className="px-4">:</td>
-                    <td>{biodata.email}</td>
-                  </tr>
-                )}
-                {currentUser && (
-                  <tr className="bg-white dark:bg-gray-800">
-                    <th
-                      scope="row"
-                      className=" py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      Contact Phone Number
-                    </th>
-                    <td className="px-4">:</td>
-
-                    <td>{biodata.phone}</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+      <div className="w-[70%] mx-auto bg-white  shadow-sm border border-gray-200 overflow-hidden my-4 sm:my-6 md:my-8">
+        {/* Header Section - Stacked on mobile, row on sm+ */}
+        <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+          {/* Profile Image - Smaller on mobile */}
+          <div className="w-32 h-32  md:w-40 md:h-40 lg:w-64 lg:h-64 border-4 border-white shadow-sm overflow-hidden">
+            <img
+              className="w-full h-full object-cover"
+              src={biodata.photo}
+              alt={biodata.name}
+            />
           </div>
 
-          <div className="md:w-[30%] ">
-            <img className="" src={biodata.photo} alt="" />
+          {/* Profile Info */}
+          <div className="text-center sm:text-left">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">
+              {biodata.name}
+            </h1>
+            <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-2">
+              <span className="bg-purple-100 text-purple-800 text-xs px-2.5 py-1 rounded-full">
+                ID: {biodata.biodataId}
+              </span>
+              <span className="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded-full">
+                {biodata.gender}
+              </span>
+              <span className="bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full">
+                Age: {biodata.age} yrs
+              </span>
+            </div>
           </div>
         </div>
-        <div className="flex gap-8 justify-center">
+
+        {/* Main Content - Responsive columns */}
+        <div className="p-4  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ">
+          {/* Personal Info - Full width on mobile, 1st column on md+ */}
+          <div className="space-y-3 ">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-700 border-b pb-1 sm:pb-2">
+              Personal Details
+            </h2>
+            <div className="flex justify-between">
+              <span className="text-gray-500 text-sm sm:text-base">
+                Date of Birth
+              </span>
+              <span className="text-gray-800 font-medium text-sm sm:text-base">
+                {formattedDate}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500 text-sm sm:text-base">Height</span>
+              <span className="text-gray-800 font-medium text-sm sm:text-base">
+                {biodata.height} ft
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500 text-sm sm:text-base">Weight</span>
+              <span className="text-gray-800 font-medium text-sm sm:text-base">
+                {biodata.weight} kg
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500 text-sm sm:text-base">
+                Religion
+              </span>
+              <span className="text-gray-800 font-medium text-sm sm:text-base">
+                {biodata.race}
+              </span>
+            </div>
+          </div>
+
+          {/* Family Info - Full width on mobile, 2nd column on md+, 1st column on lg+ */}
+          <div className="space-y-3  md:mt-0 lg:mt-0">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-700 border-b pb-1 sm:pb-2">
+              Family Details
+            </h2>
+            <div className="flex justify-between">
+              <span className="text-gray-500 text-sm sm:text-base">
+                Father's Name
+              </span>
+              <span className="text-gray-800 font-medium text-sm sm:text-base">
+                {biodata.father_name}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500 text-sm sm:text-base">
+                Mother's Name
+              </span>
+              <span className="text-gray-800 font-medium text-sm sm:text-base">
+                {biodata.mother_name}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500 text-sm sm:text-base">
+                Permanent Division
+              </span>
+              <span className="text-gray-800 font-medium text-sm sm:text-base">
+                {biodata.permanentDivision}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500 text-sm sm:text-base">
+                Present Division
+              </span>
+              <span className="text-gray-800 font-medium text-sm sm:text-base">
+                {biodata.presentDivision}
+              </span>
+            </div>
+          </div>
+
+          {/* Partner Expectations - Full width on mobile+md, 3rd column on lg+ */}
+          <div className="space-y-3  md:col-span-2 lg:col-span-1">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-700 border-b pb-1 sm:pb-2">
+              Partner Expectations
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4">
+              <div className="flex justify-between">
+                <span className="text-gray-500 text-sm sm:text-base">Age</span>
+                <span className="text-gray-800 font-medium text-sm sm:text-base">
+                  {biodata.partner_age} yrs
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500 text-sm sm:text-base">
+                  Height
+                </span>
+                <span className="text-gray-800 font-medium text-sm sm:text-base">
+                  {biodata.partner_height} ft
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500 text-sm sm:text-base">
+                  Weight
+                </span>
+                <span className="text-gray-800 font-medium text-sm sm:text-base">
+                  {biodata.partner_weight} kg
+                </span>
+              </div>
+            </div>
+
+            {/* Contact Info - Conditionally Shown */}
+            {currentUser && (
+              <div className="mt-4 sm:mt-6">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-700 border-b pb-1 sm:pb-2">
+                  Contact
+                </h2>
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex justify-between">
+                    <span className="text-gray-500 text-sm sm:text-base">
+                      Email
+                    </span>
+                    <span className="text-gray-800 font-medium text-sm sm:text-base">
+                      {biodata.email}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500 text-sm sm:text-base">
+                      Phone
+                    </span>
+                    <span className="text-gray-800 font-medium text-sm sm:text-base">
+                      {biodata.phone}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Action Buttons - Responsive sizing */}
+        <div className="bg-gray-50 px-4 sm:px-6 py-3 border-t flex flex-wrap justify-center gap-3 ">
+
           <Link>
             <button
               onClick={handleAddToFavorite}
               className="bg-[#a9106b] text-white px-4 py-2 my-4"
             >
+              <FaRegHeart className="inline mr-4" />
               Add to Favorite
             </button>{" "}
           </Link>
+
           {!currentUser && (
             <Link to={`/dashboard/checkout/${biodata._id}`}>
               <button className="bg-[#a9106b] text-white px-4 py-2 my-4">
@@ -333,9 +298,12 @@ const BiodataDetails = () => {
         <h2 className="text-center text-3xl font-bold text-gray-600 my-12">
           Some similar biodata you might be interested in
         </h2>
-        <div className="grid lg:grid-cols-3 w-[90%] mx-auto gap-8 ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 w-[90%] lg:w-[70%] mx-auto gap-12 ">
           {selectedBiodata.map((biodata) => (
-            <Biodata key={biodata.biodataId} biodata={biodata}></Biodata>
+            <BiodataCard
+              key={biodata.biodataId}
+              biodata={biodata}
+            ></BiodataCard>
           ))}
         </div>
       </div>

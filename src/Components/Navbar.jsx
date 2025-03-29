@@ -24,10 +24,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="about">
-      <div className="flex flex-col gap-4 lg:gap-4 lg:flex-row justify-between items-center w-[90%]  mx-auto bg-purple-300 shadow-xl pb-8 lg:pb-0  px-2 ">
+    <div className="about lg:sticky lg:top-0 lg:z-10">
+      <div className="flex flex-col gap-4 lg:gap-4 lg:flex-row justify-between items-center  mx-auto bg-slate-100  pb-8 lg:pb-0  px-[5%] ">
         <div className="flex items-center">
-          <img className="w-20 py-2" src={logo} alt="" />
+          <img className="w-16 py-2" src={logo} alt="" />
           <h1 className="font-bold text-2xl">
             <span className="text-[#a9106b]">Heartsync</span>{" "}
           </h1>

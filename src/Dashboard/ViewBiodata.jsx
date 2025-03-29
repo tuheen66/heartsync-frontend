@@ -44,7 +44,7 @@ const ViewBiodata = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, make it premium!",
     }).then((result) => {
       if (result.isConfirmed) {
         axiosPublic

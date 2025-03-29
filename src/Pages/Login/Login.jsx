@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import GoogleSignIn from "../../Components/GoogleSignIn";
 
 const Login = () => {
-  const { signIn, googleSignIn } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const Login = () => {
 
     signIn(email, password)
       .then((result) => {
-        const user = result.user;
+        console.log(result.user);
 
         navigate(from, { replace: true });
 

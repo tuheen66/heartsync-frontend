@@ -16,7 +16,6 @@ const Statistics = () => {
     },
   });
 
-
   const { data: marriage = [] } = useQuery({
     queryKey: ["marriage"],
     queryFn: async () => {
@@ -34,54 +33,136 @@ const Statistics = () => {
 
   return (
     <div>
-      <div className="grid lg:grid-cols-4 gap-8 mx-auto  border-2 mt-8 justify-center">
-        <div className="  border-2 border-blue-500  text-center p-4 bg-blue-300">
+      {/* <div className="grid lg:grid-cols-4 gap-8 mx-auto   mt-8 justify-center">
+        <div className="  border-2 border-gray-300  text-center p-4 bg-slate-200">
           <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
             Total No of Biodata
           </h4>
           <div className="flex justify-center items-center gap-8 my-4">
             <div className="text-5xl text-[#0088FE]">
-              <FaRegAddressBook></FaRegAddressBook>
+              <FaRegAddressBook />
             </div>
             <p className="text-5xl font-bold text-[#0088FE]">{totalBiodata}</p>
           </div>
         </div>
-        <div className="  border-2 border-pink-500  text-center p-4 bg-pink-300">
+        <div className="  border-2 border-gray-300  text-center p-4 bg-slate-200">
           <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
             Total Marriages
           </h4>
           <div className="flex justify-center items-center gap-8 my-4">
             <div className="text-5xl text-pink-600">
-            <RiHeartsFill></RiHeartsFill>
+              <RiHeartsFill />
             </div>
             <p className="text-5xl font-bold text-pink-600">{totalMarriages}</p>
           </div>
         </div>
 
-        <div className=" border-2 border-green-500  text-center p-4 bg-green-300 ">
+        <div className=" border-2 border-gray-300  text-center p-4 bg-slate-200 ">
           <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
             Total Male Biodata
           </h4>
           <div className="flex justify-center items-center gap-8 my-4">
             <div className="text-6xl text-[#00C49F]">
-              <FaMale></FaMale>
+              <FaMale />
             </div>
             <p className="text-5xl font-bold text-[#00C49F]">{maleBiodata}</p>
           </div>
         </div>
 
-        <div className="  border-2 border-yellow-500  text-center p-4 bg-yellow-100">
+        <div className="  border-2 border-gray-300  text-center p-4 bg-slate-200">
           <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
             Total Female Biodata
           </h4>
           <div className="flex justify-center items-center gap-8 my-4">
             <div className="text-6xl text-[#ffa801]">
-              <FaFemale></FaFemale>
+              <FaFemale />
             </div>
             <p className="text-5xl font-bold text-[#ffa801]">{femaleBiodata}</p>
           </div>
         </div>
+      </div> */}
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4 py-8">
+  {/* Total Biodata Card */}
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <div className="p-6">
+      <div className="flex justify-between items-start">
+        <div>
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">Total Biodata</p>
+          <h3 className="mt-2 text-3xl font-bold text-gray-900">{totalBiodata}</h3>
+        </div>
+        <div className="p-3 rounded-full bg-blue-50 text-blue-600">
+          <FaRegAddressBook className="text-3xl" />
+        </div>
       </div>
+      <div className="mt-6">
+        <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-full bg-blue-500 rounded-full" style={{ width: '100%' }}></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Marriages Card */}
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <div className="p-6">
+      <div className="flex justify-between items-start">
+        <div>
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">Marriages</p>
+          <h3 className="mt-2 text-3xl font-bold text-gray-900">{totalMarriages}</h3>
+        </div>
+        <div className="p-3 rounded-full bg-pink-50 text-pink-600">
+          <RiHeartsFill className="text-3xl" />
+        </div>
+      </div>
+      <div className="mt-6">
+        <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-full bg-pink-500 rounded-full" style={{ width: '100%' }}></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Male Biodata Card */}
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <div className="p-6">
+      <div className="flex justify-between items-start">
+        <div>
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">Male Biodata</p>
+          <h3 className="mt-2 text-3xl font-bold text-gray-900">{maleBiodata}</h3>
+        </div>
+        <div className="p-3 rounded-full bg-teal-50 text-teal-600">
+          <FaMale className="text-3xl" />
+        </div>
+      </div>
+      <div className="mt-6">
+        <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-full bg-teal-500 rounded-full" style={{ width: '100%' }}></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Female Biodata Card */}
+  <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <div className="p-6">
+      <div className="flex justify-between items-start">
+        <div>
+          <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">Female Biodata</p>
+          <h3 className="mt-2 text-3xl font-bold text-gray-900">{femaleBiodata}</h3>
+        </div>
+        <div className="p-3 rounded-full bg-amber-50 text-amber-600">
+          <FaFemale className="text-3xl" />
+        </div>
+      </div>
+      <div className="mt-6">
+        <div className="h-1.5 bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-full bg-amber-500 rounded-full" style={{ width: '100%' }}></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   );
 };

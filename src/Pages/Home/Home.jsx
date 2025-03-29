@@ -7,6 +7,7 @@ import { useState } from "react";
 import ReviewCard from "../../Components/ReviewCard";
 import Statistics from "../../Components/Statistics";
 import HowItWorks from "../../Components/HowItWorks";
+import BiodataCard from "../../Components/BiodataCard";
 
 const Home = () => {
   const axiosPublic = useAxiosPublic();
@@ -30,7 +31,7 @@ const Home = () => {
     (premBiodata) => premBiodata.status === "premium"
   );
 
-  const displayPremBiodata = premiumBiodatas.slice(0, 6);
+  const displayPremBiodata = premiumBiodatas.slice(0, 8);
 
   return (
     <div className="w-[90%] mx-auto">
@@ -62,36 +63,34 @@ const Home = () => {
             Premium member profile cards
           </h2>
         </div>
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid lg:grid-cols-4 gap-12">
           {displayPremBiodata.map((biodata) => (
-            <PremiumMemberCard
+            <BiodataCard
               key={biodata._id}
               biodata={biodata}
-            ></PremiumMemberCard>
+            ></BiodataCard>
           ))}
         </div>
       </section>
 
       <section>
-        <h2 className="font-bold text-3xl text-center text-gray-700 mb-4 ">
-          How it works:
-        </h2>
-        <HowItWorks></HowItWorks>
+        
+        <HowItWorks/>
       </section>
 
       <section className="my-12">
         <h2 className="font-bold text-3xl text-center text-gray-700 ">
           Success Counter
         </h2>
-        <Statistics></Statistics>
+        <Statistics/>
       </section>
 
       <section className="my-4">
         <h2 className="font-bold text-3xl text-center text-gray-700 mb-4">
           Success Story
         </h2>
-        <div className="bg-pink-200 p-4">
-          <ReviewCard></ReviewCard>
+        <div className="bg-slate-100 p-4">
+          <ReviewCard/>
         </div>
       </section>
     </div>

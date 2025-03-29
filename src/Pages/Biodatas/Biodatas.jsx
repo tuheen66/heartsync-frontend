@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import Biodata from "../../Components/Biodata";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { paginationClasses } from "@mui/material";
@@ -8,6 +7,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import bannerImg from "./../../assets/images/biodata.jpg";
 import { Helmet } from "react-helmet-async";
+import BiodataCard from "../../Components/BiodataCard";
 
 const Biodatas = () => {
   const axiosPublic = useAxiosPublic();
@@ -21,7 +21,7 @@ const Biodatas = () => {
 
   const { count } = useLoaderData();
 
-  const itemsPerPage = 10;
+  const itemsPerPage = 8;
   const numberOfPages = Math.ceil(count / itemsPerPage);
 
   const pages = [...Array(numberOfPages).keys()];
@@ -102,7 +102,7 @@ const Biodatas = () => {
 
       <div className="w-[90%] mx-auto my-12">
         <div className="flex flex-col lg:flex-row gap-8">
-          <div className="lg:w-1/3">
+          <div className="lg:w-1/5">
             <h2 className="text-center text-2xl font-bold text-gray-600">
               Find your desired Biodata{" "}
             </h2>
@@ -193,9 +193,9 @@ const Biodatas = () => {
             </form>
           </div>
 
-          <div className=" lg:w-2/3 grid lg:grid-cols-2 gap-8">
+          <div className=" lg:w-4/5 grid lg:grid-cols-4 gap-8">
             {biodatas.map((biodata) => (
-              <Biodata key={biodata._id} biodata={biodata}></Biodata>
+              <BiodataCard key={biodata._id} biodata={biodata}/>
             ))}
           </div>
         </div>
@@ -224,7 +224,7 @@ const Biodatas = () => {
             onClick={handleNextPage}
             className="border-2 mx-2 bg-gray-300 px-4 py-3"
           >
-            <FaChevronRight></FaChevronRight>
+            <FaChevronRight/>
           </button>
         </div>
       </div>

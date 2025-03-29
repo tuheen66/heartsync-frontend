@@ -14,7 +14,7 @@ const Register = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const { createUser, logOut } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
 

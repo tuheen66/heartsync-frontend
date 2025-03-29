@@ -7,7 +7,7 @@ const Biodata = ({ biodata }) => {
   
   return (
     <div className=" flex flex-col  border-2 border-gray-300 shadow-gray-400 shadow-xl px-4 pb-4 ">
-      <div className="flex  mt-12 flex-grow ">
+      <div className="flex  mt-12 flex-grow h-[200px] ">
         <div className=" w-[70%] ">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-900 uppercase dark:text-gray-400">

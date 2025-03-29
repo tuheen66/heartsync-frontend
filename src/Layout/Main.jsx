@@ -5,9 +5,9 @@ import Footer from "../Components/Footer";
 const Main = () => {
   return (
     <div className="mx-auto font-raleway">
-      <Navbar></Navbar>
-      <Outlet></Outlet>
-      <Footer></Footer>
+      <Navbar />
+      <Outlet />
+      <Footer />
     </div>
   );
 };

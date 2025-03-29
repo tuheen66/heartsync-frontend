@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
       {
         path: "/biodatas",
         element: <Biodatas></Biodatas>,
-        loader: () => fetch("https://heartsync-server.vercel.app/biodataCount"),
+        loader: () => fetch("http://localhost:5000/biodataCount"),
       },
 
       {
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://heartsync-server.vercel.app/biodata/${params.id}`),
+          fetch(`http://localhost:5000/biodata/${params.id}`),
       },
     ],
   },
@@ -135,7 +135,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://heartsync-server.vercel.app/biodata/${params.id}`),
+          fetch(`http://localhost:5000/biodata/${params.id}`),
       },
       {
         path: "favoriteBiodata",

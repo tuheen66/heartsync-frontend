@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const CheckoutForm = ({ biodata }) => {
   const [error, setError] = useState("");
@@ -16,7 +15,6 @@ const CheckoutForm = ({ biodata }) => {
 
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  // const axiosPublic = useAxiosPublic();
 
   const fees = 5;
 
@@ -38,8 +36,6 @@ const CheckoutForm = ({ biodata }) => {
     if (card == null) {
       return;
     }
-
-    
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
