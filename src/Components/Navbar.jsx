@@ -1,9 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/images/logo.png";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../providers/AuthProviders";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import "flowbite";
+import { initFlowbite } from "flowbite";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -19,6 +21,11 @@ const Navbar = () => {
 
   const adminUser = admin.map((user) => user.email);
 
+  useEffect(() => {
+    // Initialize Flowbite when user changes
+    initFlowbite();
+  }, [user]);
+
   const handleLogout = () => {
     logOut().then(() => console.log("logged out successfully "));
   };
@@ -33,78 +40,71 @@ const Navbar = () => {
           </h1>
         </div>
         <div>
-          <div className="flex flex-col md:flex-row font-semibold text-gray-700 justify-between items-center gap-2 md:gap-8">
+          <div className="flex flex-wrap font-semibold text-gray-700 justify-between items-center gap-2 md:gap-8">
             <NavLink
               to="/"
-              style={({ isActive, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  backgroundColor: isActive ? "#a9106b" : "",
-                  textDecorationColor: isActive ? "#a9106b" : "none",
-                  color: isActive ? "White" : "#374177",
-                  padding: "2px 6px",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
+              style={({ isActive, isTransitioning }) => ({
+                fontWeight: isActive ? "bold" : "",
+                color: "#374177",
+                padding: "2px 6px",
+                // Replace textDecoration with border-bottom for better control
+                borderBottom: isActive ? "2px solid #a9106b" : "none",
+                paddingBottom: isActive ? "4px" : "0", // Space between text and underline
+                marginBottom: isActive ? "-2px" : "0", // Compensate for the added space
+                viewTransitionName: isTransitioning ? "slide" : "",
+                display: "inline-block", // Needed for proper border-bottom spacing
+              })}
             >
               Home
             </NavLink>
             <NavLink
               to="/biodatas"
-              style={({ isActive, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  backgroundColor: isActive ? "#a9106b" : "",
-                  textDecorationColor: isActive ? "#a9106b" : "none",
-                  color: isActive ? "White" : "#374177",
-                  padding: "2px 6px",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
+              style={({ isActive, isTransitioning }) => ({
+                fontWeight: isActive ? "bold" : "",
+                color: "#374177",
+                padding: "2px 6px",
+                // Replace textDecoration with border-bottom for better control
+                borderBottom: isActive ? "2px solid #a9106b" : "none",
+                paddingBottom: isActive ? "4px" : "0", // Space between text and underline
+                marginBottom: isActive ? "-2px" : "0", // Compensate for the added space
+                viewTransitionName: isTransitioning ? "slide" : "",
+                display: "inline-block", // Needed for proper border-bottom spacing
+              })}
             >
               Biodatas
             </NavLink>
             <NavLink
               to="/aboutUs"
-              style={({ isActive, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  backgroundColor: isActive ? "#a9106b" : "",
-                  textDecorationColor: isActive ? "#a9106b" : "none",
-                  color: isActive ? "White" : "#374177",
-                  padding: "2px 6px",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
+              style={({ isActive, isTransitioning }) => ({
+                fontWeight: isActive ? "bold" : "",
+                color: "#374177",
+                padding: "2px 6px",
+                // Replace textDecoration with border-bottom for better control
+                borderBottom: isActive ? "2px solid #a9106b" : "none",
+                paddingBottom: isActive ? "4px" : "0", // Space between text and underline
+                marginBottom: isActive ? "-2px" : "0", // Compensate for the added space
+                viewTransitionName: isTransitioning ? "slide" : "",
+                display: "inline-block", // Needed for proper border-bottom spacing
+              })}
             >
               About Us
             </NavLink>
             <NavLink
               to="/contactUs"
-              style={({ isActive, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  backgroundColor: isActive ? "#a9106b" : "",
-                  textDecorationColor: isActive ? "#a9106b" : "none",
-                  color: isActive ? "White" : "#374177",
-                  padding: "2px 6px",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
+              style={({ isActive, isTransitioning }) => ({
+                fontWeight: isActive ? "bold" : "",
+                color: "#374177",
+                padding: "2px 6px",
+                // Replace textDecoration with border-bottom for better control
+                borderBottom: isActive ? "2px solid #a9106b" : "none",
+                paddingBottom: isActive ? "4px" : "0", // Space between text and underline
+                marginBottom: isActive ? "-2px" : "0", // Compensate for the added space
+                viewTransitionName: isTransitioning ? "slide" : "",
+                display: "inline-block", // Needed for proper border-bottom spacing
+              })}
             >
               Contact Us
             </NavLink>
-            {user && (
-              <NavLink
-                to={
-                  adminUser.includes(user.email)
-                    ? "/dashboard/adminDashboard/"
-                    : "/dashboard/editBiodata"
-                }
-              >
-                Dashboard
-              </NavLink>
-            )}
           </div>
         </div>
 
@@ -118,23 +118,7 @@ const Navbar = () => {
           </div>
 
           <div>
-            {user ? (
-              <div className="flex items-center gap-4">
-                <div className=" relative group ">
-                  <h2 className="font-semibold">{user?.displayName}</h2>
-                  {/* <img className="w-14 rounded-full  " src={user?.photoURL} /> */}
-
-                  <p className="opacity-0 group-hover:opacity-100 absolute w-44 text-center -bottom-4 right-16 text-xl text-gray-700 bg-gray-200 font-semibold"></p>
-                </div>
-
-                <button
-                  onClick={handleLogout}
-                  className="py-2 px-4 rounded-none border-none bg-[#a9106b] hover:bg-[#30336b] text-white"
-                >
-                  Logout
-                </button>
-              </div>
-            ) : (
+            {!user ? (
               <div>
                 <Link to="/login">
                   <button className="px-4 py-2 border-none rounded-none mr-2 bg-[#a9106b] hover:bg-[#30336b] text-white">
@@ -142,6 +126,50 @@ const Navbar = () => {
                   </button>
                 </Link>
               </div>
+            ) : (
+              <>
+                <button
+                  id="dropdownDefaultButton"
+                  data-dropdown-toggle="dropdown"
+                  className="px-1 py-1 border-none rounded-full mr-2 bg-[#a9106b] hover:bg-[#30336b] text-white"
+                  type="button"
+                >
+                  <img className="w-14 rounded-full  " src={user?.photoURL} />
+                </button>
+                <div
+                  id="dropdown"
+                  className="z-10 hidden bg-slate-100 divide-y divide-gray-100  shadow-sm w-44 dark:bg-gray-700 border-2"
+                >
+                  <ul
+                    className="ml-4 py-4 space-y-3 text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdownDefaultButton"
+                  >
+                    <li>
+                      {user && (
+                        <NavLink
+                          className=" text-gray-900 py-2 px-4 "
+                          to={
+                            adminUser.includes(user.email)
+                              ? "/dashboard/adminDashboard/"
+                              : "/dashboard/editBiodata"
+                          }
+                        >
+                          Dashboard
+                        </NavLink>
+                      )}
+                    </li>
+
+                    <li>
+                      <button
+                        onClick={handleLogout}
+                        className="py-2 px-4  text-gray-900"
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </>
             )}
           </div>
         </div>

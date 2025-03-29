@@ -80,71 +80,157 @@ const AdminDashboard = () => {
         <title>Heartsync | Admin Dashboard</title>
       </Helmet>
 
-      <div className="grid md:grid-cols-2 gap-8 mx-auto w-[95%] border-2 mt-8 justify-center">
-        <div className="  border-2 border-blue-500 rounded-lg text-center p-4 bg-blue-300">
-          <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
-            Total No of Biodata
-          </h4>
-          <div className="flex justify-center items-center gap-8 my-4">
-            <div className="text-5xl text-[#0088FE]">
-              <FaRegAddressBook></FaRegAddressBook>
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {/* Total Biodata Card */}
+          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div className="p-6">
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                    Total Biodata
+                  </p>
+                  <p className="mt-1 text-3xl font-semibold text-gray-900">
+                    {totalBiodata}
+                  </p>
+                </div>
+                <div className="p-3 rounded-full bg-blue-50 text-blue-600">
+                  <FaRegAddressBook className="text-2xl" />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="h-1 bg-gray-200 rounded-full">
+                  <div
+                    className="h-1 bg-blue-500 rounded-full"
+                    style={{ width: "100%" }}
+                  ></div>
+                </div>
+              </div>
             </div>
-            <p className="text-5xl font-bold text-[#0088FE]">{totalBiodata}</p>
+          </div>
+
+          {/* Premium Biodata Card */}
+          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div className="p-6">
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                    Premium Biodata
+                  </p>
+                  <p className="mt-1 text-3xl font-semibold text-gray-900">
+                    {premiumBiodata}
+                  </p>
+                </div>
+                <div className="p-3 rounded-full bg-purple-50 text-purple-600">
+                  <FaRegAddressBook className="text-2xl" />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="h-1 bg-gray-200 rounded-full">
+                  <div
+                    className="h-1 bg-purple-500 rounded-full"
+                    style={{
+                      width: `${(premiumBiodata / totalBiodata) * 100}%`,
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Male Biodata Card */}
+          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div className="p-6">
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                    Male Biodata
+                  </p>
+                  <p className="mt-1 text-3xl font-semibold text-gray-900">
+                    {maleBiodata}
+                  </p>
+                </div>
+                <div className="p-3 rounded-full bg-green-50 text-green-600">
+                  <FaMale className="text-2xl" />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="h-1 bg-gray-200 rounded-full">
+                  <div
+                    className="h-1 bg-green-500 rounded-full"
+                    style={{ width: `${(maleBiodata / totalBiodata) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Female Biodata Card */}
+          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div className="p-6">
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                    Female Biodata
+                  </p>
+                  <p className="mt-1 text-3xl font-semibold text-gray-900">
+                    {femaleBiodata}
+                  </p>
+                </div>
+                <div className="p-3 rounded-full bg-yellow-50 text-yellow-600">
+                  <FaFemale className="text-2xl" />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="h-1 bg-gray-200 rounded-full">
+                  <div
+                    className="h-1 bg-yellow-500 rounded-full"
+                    style={{
+                      width: `${(femaleBiodata / totalBiodata) * 100}%`,
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="  border-2 border-purple-500 rounded-lg text-center p-4 bg-purple-300">
-          <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
-            Premium Biodata
-          </h4>
-          <div className="flex justify-center items-center gap-8 my-4">
-            <div className="text-5xl text-[#9b59b6]">
-              <FaRegAddressBook></FaRegAddressBook>
+        {/* Revenue Card */}
+        <div className="md:flex md:justify-center">
+          <div className=" md:w-1/2 bg-gradient-to-r from-orange-50 to-amber-50 rounded-xl shadow-md overflow-hidden border border-orange-100">
+            <div className="p-6">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+                <div>
+                  <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
+                    Total Fees Earned
+                  </p>
+                  <p className="mt-2 text-4xl font-bold text-gray-900">
+                    ${totalFees}
+                  </p>
+                  <p className="mt-2 text-sm text-gray-500">
+                    Total revenue generated
+                  </p>
+                </div>
+                <div className="mt-4 md:mt-0">
+                  <div className="p-4 rounded-full bg-orange-100 text-orange-600 inline-flex">
+                    <FaDollarSign className="text-3xl" />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6">
+                <div className="h-2 bg-orange-100 rounded-full">
+                  <div
+                    className="h-2 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full"
+                    style={{ width: "100%" }}
+                  ></div>
+                </div>
+              </div>
             </div>
-            <p className="text-5xl font-bold text-[#9b59b6]">
-              {premiumBiodata}
-            </p>
-          </div>
-        </div>
-
-        <div className=" border-2 border-green-500 rounded-lg text-center p-4 bg-green-300 ">
-          <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
-            Total Male Biodata
-          </h4>
-          <div className="flex justify-center items-center gap-8 my-4">
-            <div className="text-6xl text-[#00C49F]">
-              <FaMale></FaMale>
-            </div>
-            <p className="text-5xl font-bold text-[#00C49F]">{maleBiodata}</p>
-          </div>
-        </div>
-
-        <div className="  border-2 border-yellow-500 rounded-lg text-center p-4 bg-yellow-100">
-          <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
-            Total Female Biodata
-          </h4>
-          <div className="flex justify-center items-center gap-8 my-4">
-            <div className="text-6xl text-[#ffa801]">
-              <FaFemale></FaFemale>
-            </div>
-            <p className="text-5xl font-bold text-[#ffa801]">{femaleBiodata}</p>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto w-[95%] mt-8  border-2 border-orange-500 rounded-lg text-center p-4 bg-orange-200">
-        <div>
-          <h4 className="text-center uppercase text-3xl font-semibold text-gray-800">
-            Total Fees earned
-          </h4>
-        </div>
-        <div className="flex justify-center mt-4">
-          <div className="text-6xl text-[#FF8042]">
-            <FaDollarSign></FaDollarSign>
-          </div>
-          <p className="text-6xl font-bold text-[#FF8042] ">{totalFees}</p>
-        </div>
-      </div>
       <div className="my-8 flex justify-center w-[100%] h-[400px] ">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart width={400} height={400}>

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../hooks/useAuth";
-
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
@@ -9,7 +8,7 @@ const ViewBiodata = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
 
-  const { data: biodata = [] } = useQuery({
+  const { data: biodata = [], refetch } = useQuery({
     queryKey: ["biodata", user.email],
     queryFn: async () => {
       const res = await axiosPublic.get(`/biodatas/${user?.email}`);
@@ -19,272 +18,161 @@ const ViewBiodata = () => {
 
   const birthDate = biodata.birth_date;
   const date = new Date(birthDate);
-
-  const options = { day: "2-digit", month: "short", year: "numeric" };
-  const formattedDate = date
-    .toLocaleDateString("en-GB", options)
-    .replace(",", "");
-
-  const premBioInfo = {
-    name: biodata.name,
-    biodataId: biodata.biodataId,
-    photo: biodata.photo,
-    biodataType: biodata.gender,
-    age: biodata.age,
-    occupation: biodata.occupation,
-    permanentDivision: biodata.permanentDivision,
-    email: biodata.email,
-  };
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   const handleBiodataPremiumRequest = (biodata) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
+      title: "Upgrade to Premium?",
+      text: "This will make your biodata featured for potential matches.",
+      icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, make it premium!",
+      confirmButtonColor: "#7c3aed",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Upgrade Now",
+      cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic
-          .patch(`/prem-biodata/premium/${biodata._id}`)
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.modifiedCount > 0) {
-              refetch();
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `${biodata.name} is made Premium`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            }
-          });
+        axiosPublic.patch(`/prem-biodata/premium/${biodata._id}`).then((res) => {
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Success!",
+              text: `${biodata.name}'s biodata is now Premium`,
+              icon: "success",
+              confirmButtonColor: "#7c3aed",
+            });
+          }
+        });
       }
     });
   };
 
   return (
-    <div className="mb-12">
-       <Helmet>
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <Helmet>
         <title>Heartsync | View Biodata</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-center w-3/4 mx-auto my-12">
-        Biodata of {biodata.name}
-      </h2>
 
-      <div className="flex flex-col-reverse gap-4 lg:flex-row  mt-12 ">
-        <div class=" lg:w-[60%] md:mx-auto lg:ml-12">
-          <table class="lg:w-[90%] text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-900 uppercase dark:text-gray-400">
-              <tr>
-                <th scope="col" class="px-4 ">
-                  Name
-                </th>
-                <th scope="col" class="px-4 ">
-                  :
-                </th>
-                <th scope="col" class="px-4 ">
-                  {biodata.name}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Biodata Type
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.gender}</td>
-              </tr>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            {biodata.name}'s Biodata
+          </h1>
+          {biodata.status === "premium" && (
+            <span className="inline-block bg-purple-100 text-[#a9106b] text-sm font-semibold px-3 py-1 rounded-full">
+              Premium Profile
+            </span>
+          )}
+        </div>
 
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Date of Birth
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{formattedDate}</td>
-              </tr>
+        <div className="bg-white shadow-lg  overflow-hidden">
+          <div className="md:flex">
+            {/* Profile Image */}
+            <div className="md:w-1/3 p-6 flex justify-center">
+              <div className="relative">
+                <img
+                  src={biodata.photo}
+                  alt={biodata.name}
+                  className="w-64 h-64 object-cover  shadow-md"
+                />
+                {biodata.status !== "premium" && (
+                  <button
+                    onClick={() => handleBiodataPremiumRequest(biodata)}
+                    className="absolute -bottom-4 left-1/2 transform -translate-x-1/2
+                     bg-[#a9106b] text-white px-6 py-2  shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
+                  >
+                    Upgrade to Premium
+                  </button>
+                )}
+              </div>
+            </div>
 
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Age
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.age} yrs</td>
-              </tr>
+            {/* Biodata Details */}
+            <div className="md:w-2/3 p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <DetailItem label="Biodata Type" value={biodata.gender} />
+                <DetailItem label="Biodata ID" value={biodata.biodataId} />
+                <DetailItem label="Date of Birth" value={formattedDate} />
+                <DetailItem label="Age" value={`${biodata.age} years`} />
+                <DetailItem label="Height" value={`${biodata.height} ft`} />
+                <DetailItem label="Weight" value={`${biodata.weight} kg`} />
+                <DetailItem label="Religion" value={biodata.race} />
+                <DetailItem
+                  label="Occupation"
+                  value={biodata.occupation}
+                />
+                <DetailItem
+                  label="Permanent Division"
+                  value={biodata.permanentDivision}
+                />
+                <DetailItem
+                  label="Present Division"
+                  value={biodata.presentDivision}
+                />
+                <DetailItem label="Contact Email" value={biodata.email} />
+                <DetailItem
+                  label="Contact Phone"
+                  value={biodata.phone}
+                />
+              </div>
 
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Height
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.height} ft</td>
-              </tr>
+              {/* Partner Preferences Section */}
+              <div className="mt-10 pt-6 border-t border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Partner Preferences
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <DetailItem
+                    label="Preferred Age"
+                    value={`${biodata.partner_age} years`}
+                  />
+                  <DetailItem
+                    label="Preferred Height"
+                    value={`${biodata.partner_height} ft`}
+                  />
+                  <DetailItem
+                    label="Preferred Weight"
+                    value={`${biodata.partner_weight} kg`}
+                  />
+                </div>
+              </div>
 
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Weight
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.weight} kg</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Expected Partner Height
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.partner_height} ft</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Expected Partner Weight
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.partner_weight} kg</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Expected Partner age
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.partner_age} yrs</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Religion
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.race}</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Father's Name
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.father_name}</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Mother's Name
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.mother_name}</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Permanent Division
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.permanentDivision}</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Present Division
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.presentDivision}</td>
-              </tr>
-
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Contact Email
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.email}</td>
-              </tr>
-              <tr className="bg-white dark:bg-gray-800">
-                <th
-                  scope="row"
-                  class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Contact Phone Number
-                </th>
-                <td className="px-4 ">:</td>
-                <td className="px-4 ">{biodata.phone}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div className="px-6">
-            <button
-              onClick={() => handleBiodataPremiumRequest(biodata)}
-              className={`bg-[#a9106b] text-white px-4 py-2 mt-12 ${
-                biodata.status === "premium" && "invisible"
-              }`}
-            >
-              Make Biodata to Premium
-            </button>
+              {/* Family Information Section */}
+              <div className="mt-10 pt-6 border-t border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Family Information
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <DetailItem
+                    label="Father's Name"
+                    value={biodata.father_name}
+                  />
+                  <DetailItem
+                    label="Mother's Name"
+                    value={biodata.mother_name}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="lg:w-[40%] md:mx-auto ">
-          <img src={biodata.photo} alt="" />
-        </div>
-      </div>
-
-      <div className="w-1/2 lg:w-full">
-        {biodata.status === "premium" && (
-          <p className=" mt-6 ml-6 font-semibold text-green-800 text-xl">
-            {" "}
-            ** Your Biodata is Premium **
-          </p>
-        )}
       </div>
     </div>
   );
 };
+
+// Reusable component for detail items
+const DetailItem = ({ label, value }) => (
+  <div>
+    <p className="text-sm font-medium text-gray-500">{label}</p>
+    <p className="mt-1 text-lg font-semibold text-gray-900">
+      {value || "Not specified"}
+    </p>
+  </div>
+);
 
 export default ViewBiodata;

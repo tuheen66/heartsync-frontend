@@ -18,7 +18,7 @@ const ReviewCard = () => {
   });
 
   return (
-    <div className="">
+    <div className="w-[90%] mx-auto">
       <Swiper
         navigation={true}
         loop="true"
@@ -27,7 +27,7 @@ const ReviewCard = () => {
       >
         {marriage.map((item) => (
           <SwiperSlide key={item._id} className="">
-            <div className=" mx-auto bg-white p-4  shadow-lg border border-gray-100">
+            <div className=" bg-white p-4  shadow-lg border border-gray-100">
               {/* Header with couple photos and names */}
               <div className="flex items-center justify-center gap-12 mb-4">
                 {/* Couple photos with elegant decoration */}

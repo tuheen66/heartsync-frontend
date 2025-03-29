@@ -11,6 +11,7 @@ const ContactRequest = () => {
   const { data: requestedContacts = [], refetch } = useQuery({
     queryKey: ["requestedContacts", user?.email],
     queryFn: async () => {
+      refetch()
       const res = await axiosPublic.get(
         `/contact-request?email=${user?.email}`
       );

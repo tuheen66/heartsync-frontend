@@ -34,12 +34,12 @@ const Home = () => {
   const displayPremBiodata = premiumBiodatas.slice(0, 8);
 
   return (
-    <div className="w-[90%] mx-auto">
+    <div className=" mx-auto">
       <Helmet>
         <title>Heartsync | Home</title>
       </Helmet>
-      <Banner></Banner>
-      <section className="my-12">
+      <Banner/>
+      <section className="mt-4 mb-12 w-[90%] mx-auto">
         <div className="flex  flex-col-reverse lg:flex-row items-center lg:gap-56">
           <form>
             <label

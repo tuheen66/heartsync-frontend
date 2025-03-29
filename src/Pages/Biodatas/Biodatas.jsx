@@ -88,7 +88,7 @@ const Biodatas = () => {
         <title>Heartsync | Biodata</title>
       </Helmet>
       <div
-        className="mx-auto min-h-[200px] md:min-h-[300px] lg:min-h-[450px] w-[90%] bg-cover bg-center"
+        className="mx-auto min-h-[200px] md:min-h-[300px] lg:min-h-[450px]  bg-cover bg-center"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bannerImg})`,
         }}

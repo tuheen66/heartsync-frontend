@@ -15,13 +15,13 @@ import "swiper/css/scrollbar";
 import "swiper/css/parallax";
 import "swiper/css/autoplay";
 
-import slider1 from "../assets/images/banner01.jpg";
-import slider2 from "../assets/images/banner02.jpg";
-import slider3 from "../assets/images/banner03.jpg";
+import slider1 from "../assets/images/slide1.jpg";
+import slider2 from "../assets/images/slide2.jpg";
+import slider3 from "../assets/images/slide3.jpg";
 
 const Banner = () => {
   return (
-    <div className="min-h-[400px]">
+    <div className="w-full">
       <Swiper
         className="mySwiper "
         // install Swiper modules

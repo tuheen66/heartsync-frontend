@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ biodata }) => {
   const [error, setError] = useState("");
@@ -12,6 +12,7 @@ const CheckoutForm = ({ biodata }) => {
 
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
 
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -69,7 +70,7 @@ const CheckoutForm = ({ biodata }) => {
       if (paymentIntent.status === "succeeded") {
         console.log("transaction Id", paymentIntent.id);
         setTransactionId(paymentIntent.id);
-
+        navigate("/dashboard/contactRequest");
         const payment = {
           email: user?.email,
           fees: fees,
@@ -119,7 +120,7 @@ const CheckoutForm = ({ biodata }) => {
   };
 
   return (
-    <div className="mb-16 mx-auto lg:w-[50%] bg-blue-300 p-8">
+    <div className="mb-16 mx-auto lg:w-[50%] bg-slate-200 p-8">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row justify-center md:gap-20">
           <div className="mb-5 flex-1">

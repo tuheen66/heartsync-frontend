@@ -24,10 +24,8 @@ const GotMarried = () => {
       photo,
       sp_photo,
       message,
-      rating
+      rating,
     };
-
-    
 
     axiosSecure.patch("/marriage", marriageInfo).then((res) => {
       console.log(res.data);
@@ -46,7 +44,7 @@ const GotMarried = () => {
 
   return (
     <div className="mb-8">
-       <Helmet>
+      <Helmet>
         <title>Heartsync | Got Married</title>
       </Helmet>
       <h2 className="text-center text-3xl font-bold text-gray-700 my-8">
@@ -54,116 +52,122 @@ const GotMarried = () => {
       </h2>
       <form
         onSubmit={handleMarriageInfo}
-        className=" lg:w-[50%] mx-auto bg-blue-300 p-4"
+        className="max-w-2xl mx-auto bg-white p-6 shadow-md"
       >
-        <div className="flex justify-between">
-          <div className="mb-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
             <label
-              htmlFor="text"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              htmlFor="biodataId"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Your biodata Id
+              Your Biodata ID
             </label>
             <input
               type="text"
               id="biodataId"
               name="biodataId"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="your biodata Id"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent"
+              placeholder="Enter your biodata ID"
               required
             />
           </div>
 
-          <div className="mb-5">
+          <div>
             <label
               htmlFor="sp_biodataId"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Spouse's biodata Id
+              Spouse's Biodata ID
             </label>
             <input
               type="text"
               id="sp_biodataId"
               name="sp_biodataId"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent"
+              placeholder="Enter spouse's biodata ID"
               required
-              placeholder="spouse's biodata Id"
             />
           </div>
         </div>
-        <div className="mb-5">
-          <label
-            htmlFor="photo"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Your photo link
-          </label>
-          <input
-            type="text"
-            id="photo"
-            name="photo"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="your photo link"
-            required
-          />
-        </div>
 
-        <div className="mb-5">
-          <label
-            htmlFor="sp_photo"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Spouse's photo link
-          </label>
-          <input
-            type="text"
-            id="sp_photo"
-            name="sp_photo"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            required
-            placeholder="spouse's photo link"
-          />
-        </div>
-
-        <label
-          htmlFor="message"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
-          Your Reviews
-        </label>
-        <textarea
-          id="message"
-          rows="4"
-          name="message"
-          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50  border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Leave a review..."
-        ></textarea>
-
-        <div className="flex justify-between items-center mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
-
-          <button
-            type="submit"
-            className="px-4 py-2 rounded-none border-none bg-[#a9106b] hover:bg-[#30336b] text-white"
-          >
-            Submit
-          </button>
+            <label
+              htmlFor="photo"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Your Photo URL
+            </label>
+            <input
+              type="text"
+              id="photo"
+              name="photo"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent"
+              placeholder="Paste your photo link"
+              required
+            />
           </div>
 
-          <div className="mb-5 ">
+          <div>
+            <label
+              htmlFor="sp_photo"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              Spouse's Photo URL
+            </label>
+            <input
+              type="text"
+              id="sp_photo"
+              name="sp_photo"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent"
+              placeholder="Paste spouse's photo link"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Your Review
+          </label>
+          <textarea
+            id="message"
+            rows="4"
+            name="message"
+            className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700focus:border-transparent"
+            placeholder="Share your experience..."
+          ></textarea>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="w-full md:w-auto">
+            <button
+              type="submit"
+              className="w-full px-6 py-2 bg-[#a9106b] text-white font-medium  hover:bg-pink-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Submit Review
+            </button>
+          </div>
+
+          <div className="w-full md:w-32">
             <label
               htmlFor="rating"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Rating
+              Rating (1-5)
             </label>
             <input
               type="number"
               id="rating"
               name="rating"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              min="1"
+              max="5"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
-              placeholder="1 to 5"
+              placeholder="1-5"
             />
           </div>
         </div>
