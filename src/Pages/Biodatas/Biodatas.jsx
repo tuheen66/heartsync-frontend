@@ -88,7 +88,7 @@ const Biodatas = () => {
         <title>Heartsync | Biodata</title>
       </Helmet>
       <div
-        className="mx-auto min-h-[200px] md:min-h-[300px] lg:min-h-[450px]  bg-cover bg-center"
+        className="mx-auto min-h-[200px] md:min-h-[300px] lg:min-h-[450px]  bg-cover bg-center "
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bannerImg})`,
         }}
@@ -102,13 +102,13 @@ const Biodatas = () => {
 
       <div className="w-[90%] mx-auto my-12">
         <div className="flex flex-col lg:flex-row gap-8">
-          <div className="lg:w-1/5">
+          <div className="lg:w-1/5 ">
             <h2 className="text-center text-2xl font-bold text-gray-600">
               Find your desired Biodata{" "}
             </h2>
             <form
               onSubmit={handleSearch}
-              className=" gap-4 my-8 justify-between items-center  mx-auto bg-purple-200 px-8 py-4 "
+              className=" gap-4 my-8 justify-between items-center rounded-lg  mx-auto bg-purple-200 px-8 py-4 "
             >
               <div>
                 <label
@@ -185,7 +185,7 @@ const Biodatas = () => {
                 </select>
               </div>
               <button
-                className="bg-[#a9106b] text-white py-2 px-4 my-6 w-full"
+                className="bg-[#a9106b] text-white py-2 rounded-lg px-4 my-6 w-full"
                 type="submit"
               >
                 Search
@@ -203,17 +203,17 @@ const Biodatas = () => {
         <div className="flex mt-16 justify-center">
           <button
             onClick={handlePrevPage}
-            className="border-2 mx-2 bg-gray-300 px-4 py-3"
+            className="border-2 mx-2 bg-gray-300 px-4 py-3 rounded-lg"
           >
             <FaChevronLeft></FaChevronLeft>
           </button>
           {pages.map((page) => (
             <button
               onClick={() => setCurrentPage(page)}
-              className={`lg:mx-4 px-4 ${
+              className={`lg:mx-4 px-4  ${
                 currentPage === page
-                  ? "bg-[#a9106b] text-white text-xl"
-                  : "bg-gray-300 text-xl"
+                  ? "bg-[#a9106b] text-white text-xl rounded-lg"
+                  : "bg-gray-300 text-xl rounded-lg"
               }`}
               key={paginationClasses}
             >
@@ -222,7 +222,7 @@ const Biodatas = () => {
           ))}
           <button
             onClick={handleNextPage}
-            className="border-2 mx-2 bg-gray-300 px-4 py-3"
+            className="border-2 mx-2 bg-gray-300 px-4 py-3 rounded-lg"
           >
             <FaChevronRight/>
           </button>

@@ -8,6 +8,7 @@ import ReviewCard from "../../Components/ReviewCard";
 import Statistics from "../../Components/Statistics";
 import HowItWorks from "../../Components/HowItWorks";
 import BiodataCard from "../../Components/BiodataCard";
+import Newsletter from "../../Components/Newsletter";
 
 const Home = () => {
   const axiosPublic = useAxiosPublic();
@@ -63,7 +64,7 @@ const Home = () => {
             Premium member profile cards
           </h2>
         </div>
-        <div className="grid lg:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mt-8">
           {displayPremBiodata.map((biodata) => (
             <BiodataCard
               key={biodata._id}
@@ -92,6 +93,10 @@ const Home = () => {
         <div className="bg-slate-100 p-4">
           <ReviewCard/>
         </div>
+      </section>
+
+      <section>
+        <Newsletter/>
       </section>
     </div>
   );

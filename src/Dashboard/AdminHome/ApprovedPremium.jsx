@@ -120,7 +120,7 @@ const ApprovedPremium = () => {
                   <td className="px-6 py-4 text-center">
                     <button
                       onClick={() => handleMakeBiodataPremium(item)}
-                      className="bg-[#a9106b] text-white px-2 py-2"
+                      className="bg-[#a9106b] text-white px-2 py-2 rounded-md"
                     >
                       {item.status === "premium" ? "Premium" : "Make Premium"}
                     </button>

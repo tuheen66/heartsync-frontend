@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const BiodataCard = ({ biodata }) => {
   return (
-    <div className="bg-white border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-200 ">
+    <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-200 ">
       <div className="flex flex-col flex-grow ">
-        <div className=" flex items-center justify-center">
+        <div className=" flex items-center justify-center rounded-lg">
           <img
-            className=" w-full px-6 pt-6"
+            className=" w-full  rounded-t-lg"
             src={biodata.photo}
             alt={biodata.name}
           />
@@ -45,7 +45,7 @@ const BiodataCard = ({ biodata }) => {
 
       <Link
         to={`/biodata-details/${biodata._id}`}
-        className="block w-full text-center bg-[#a9106b] hover:bg-pink-600 text-white py-1 px-4  transition-colors duration-200"
+        className="block w-full text-sm text-center bg-[#a9106b] hover:bg-pink-600 text-white py-1 px-4  transition-colors duration-200"
       >
         View Full Profile
       </Link>

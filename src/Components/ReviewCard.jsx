@@ -27,10 +27,10 @@ const ReviewCard = () => {
       >
         {marriage.map((item) => (
           <SwiperSlide key={item._id} className="">
-            <div className=" bg-white p-4  shadow-lg border border-gray-100">
-              {/* Header with couple photos and names */}
+            <div className=" bg-white p-4  shadow-lg border border-gray-100 rounded-lg">
+              
               <div className="flex items-center justify-center gap-12 mb-4">
-                {/* Couple photos with elegant decoration */}
+              
                 <div className="flex items-center justify-center -space-x-6">
                   <div className="w-40 h-40 p-1.5 bg-gradient-to-br from-rose-50 to-amber-50 rounded-full shadow-lg z-10">
                     <img
@@ -52,7 +52,7 @@ const ReviewCard = () => {
               {/* Wedding details in elegant layout */}
               <div className="flex flex-col lg:flex-row gap-8 mb-4">
                 {/* Wedding date */}
-                <div className="col-span-1 text-center p-6 bg-gray-50 rounded-xl w-[25%]">
+                <div className="col-span-1 text-center lg:p-6 bg-gray-50 rounded-xl lg:w-[25%]">
                   <div className="text-xs font-medium text-gray-500 tracking-widest mb-2">
                     WEDDING DATE
                   </div>
@@ -66,7 +66,7 @@ const ReviewCard = () => {
                 </div>
 
                 {/* Main message */}
-                <div className="col-span-2 p-2 bg-rose-50 rounded-xl border border-rose-100 w-[75%]">
+                <div className="col-span-2 p-2 bg-rose-50 rounded-xl border border-rose-100 lg:w-[75%]">
                   <div className="text-gray-700 leading-relaxed text-center font-serif text-lg italic">
                     "{item.message}"
                   </div>

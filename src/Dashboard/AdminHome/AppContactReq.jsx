@@ -79,7 +79,7 @@ const AppContactReq = () => {
                     <td className="px-6 py-4">
                       <button
                         onClick={() => approveContactRequest(item)}
-                        className="font-medium uppercase text-white dark:text-blue-500  bg-green-600 py-2 px-3 disabled"
+                        className="font-medium uppercase text-white dark:text-blue-500  bg-green-600 py-2 px-3 disabled rounded-md"
                       >
                         {item.status}
                       </button>
@@ -88,7 +88,7 @@ const AppContactReq = () => {
                     <td className="px-6 py-4">
                       <button
                         onClick={() => approveContactRequest(item)}
-                        className="font-medium uppercase text-white dark:text-blue-500  bg-[#a9106b] py-2 px-3"
+                        className="font-medium uppercase text-white dark:text-blue-500  bg-[#a9106b] py-2 px-3 rounded-md"
                       >
                         {item.status}
                       </button>

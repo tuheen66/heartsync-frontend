@@ -85,26 +85,26 @@ const Login = () => {
         <div className="w-full flex-1 p-4  mx-auto text-gray-700 my-8 ">
           <h2 className="text-center text-3xl font-bold">Please Login</h2>
 
-          <div className=" border border-gray-300 px-4 my-4">
+          <div className=" border border-gray-300 px-4 my-4 rounded-lg">
             <p className="text-sm text-center my-4">For test purpose only</p>
             <div className="flex  gap-4 mb-6">
               <button
                 onClick={() =>
                   handleQuickLogin("admin@heartsync.com", "admin123")
                 }
-                className=" bg-slate-100 text-gray-800 py-2 px-4  flex-1 border border-gray-300"
+                className=" bg-slate-100 text-gray-800 py-2 px-4 rounded-lg flex-1 border border-gray-300"
               >
                 Login as Admin
               </button>
               <button
                 onClick={() => handleQuickLogin("aminur@rahman.com", "123456")}
-                className="bg-slate-300 text-gray-800 py-2 px-4  flex-1 border border-gray-300"
+                className="bg-slate-300 text-gray-800 py-2 px-4 rounded-lg flex-1 border border-gray-300"
               >
                 Login as Premium User
               </button>
               <button
                 onClick={() => handleQuickLogin("ayesha@sultana.com", "123456")}
-                className="bg-slate-300 text-gray-800 py-2 px-4  flex-1 border border-gray-300"
+                className="bg-slate-300 text-gray-800 py-2 px-4 rounded-lg flex-1 border border-gray-300"
               >
                 Login as Normal User
               </button>
@@ -117,7 +117,7 @@ const Login = () => {
                 Your email:
               </label>
               <input
-                className=" py-2 px-4 w-full mb-2  border border-gray-300"
+                className=" py-2 px-4 w-full mb-2  border border-gray-300 rounded-lg"
                 type="email"
                 name="email"
                 id="email"
@@ -129,7 +129,7 @@ const Login = () => {
                 Password:
               </label>
               <input
-                className=" py-2 px-4 w-full mb-2  border border-gray-300"
+                className=" py-2 px-4 w-full mb-2  border border-gray-300 rounded-lg"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
@@ -143,7 +143,7 @@ const Login = () => {
             </div>
 
             <input
-              className=" bg-[#a9106b] py-2  w-full border-none text-white text-lg mt-6 hover:bg-[#30336b] "
+              className=" bg-[#a9106b] py-2  w-full border-none rounded-lg text-white text-lg mt-6 hover:bg-[#30336b] "
               type="submit"
               value="Login"
             />

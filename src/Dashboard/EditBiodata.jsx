@@ -299,7 +299,7 @@ const EditBiodata = () => {
                 name="gender"
                 value={info.gender}
                 onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-md  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option value="Gender">Gender</option>
                 <option value="Male">Male</option>
@@ -319,7 +319,7 @@ const EditBiodata = () => {
                 name="height"
                 value={info.height}
                 onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-md  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option value="Select">Select</option>
                 <option value="5.0">5' 0"</option>
@@ -343,7 +343,7 @@ const EditBiodata = () => {
                 name="weight"
                 value={info.weight}
                 onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-md  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option value="Select">Select</option>
                 <option value="50">45-50 kg</option>
@@ -375,7 +375,7 @@ const EditBiodata = () => {
                 name="occupation"
                 value={info.occupation}
                 onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-md  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option value="Select">Select</option>
                 <option value="student">Student</option>
@@ -396,7 +396,7 @@ const EditBiodata = () => {
                 name="partner_height"
                 value={info.partner_height}
                 onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-md  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option value="Select">Select</option>
                 <option value="5.0">5' 0"</option>
@@ -421,7 +421,7 @@ const EditBiodata = () => {
                 name="partner_weight"
                 value={info.partner_weight}
                 onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-md  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option value="Select">Select</option>
                 <option value="50">45-50 kg</option>
@@ -454,7 +454,7 @@ const EditBiodata = () => {
                 name="race"
                 value={info.race}
                 onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-md  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option value="Select">Select</option>
                 <option value="islam">Islam</option>
@@ -476,7 +476,7 @@ const EditBiodata = () => {
                 name="permanentDivision"
                 value={info.permanentDivision}
                 onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option value="Select">Select</option>
                 <option value="Dhaka">Dhaka</option>
@@ -501,7 +501,7 @@ const EditBiodata = () => {
                 name="presentDivision"
                 value={info.presentDivision}
                 onChange={handleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
               >
                 <option value="Select">Select</option>
                 <option value="Dhaka">Dhaka</option>
@@ -517,7 +517,7 @@ const EditBiodata = () => {
 
           <button
             type="submit"
-            className="text-white bg-[#a9106b] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-[#a9106b] hover:bg-pink-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium  text-sm w-full sm:w-auto px-5 py-2.5 text-center rounded-md "
           >
             Save And Publish Now
           </button>

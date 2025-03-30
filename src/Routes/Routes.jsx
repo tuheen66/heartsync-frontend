@@ -21,6 +21,10 @@ import AppContactReq from "../Dashboard/AdminHome/AppContactReq";
 import GotMarried from "../Dashboard/GotMarried";
 import SuccessStory from "../Dashboard/AdminHome/SuccessStory";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import ManageBlogs from "../Dashboard/AdminHome/ManageBlogs";
+import BlogDetails from "../Pages/Blogs/BlogDetails";
+import AllBlogsPge from "../Pages/Blogs/AllBlogs";
+import CreateBlogPage from "../Pages/Blogs/CreateBlog";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +69,17 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/biodata/${params.id}`),
       },
+
+      {
+        path: "/blogs",
+        element: <AllBlogsPge />,
+      },
+      {
+        path: "/blog-detail/:id",
+        element: <BlogDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/blogs/${params.id}`),
+      },
     ],
   },
   {
@@ -95,7 +110,7 @@ export const router = createBrowserRouter([
         path: "appPremium",
         element: (
           <AdminRoute>
-            <ApprovedPremium></ApprovedPremium>
+            <ApprovedPremium />
           </AdminRoute>
         ),
       },
@@ -103,28 +118,38 @@ export const router = createBrowserRouter([
         path: "appContactReq",
         element: (
           <AdminRoute>
-            <AppContactReq></AppContactReq>,
+            <AppContactReq />,
           </AdminRoute>
         ),
       },
       {
         path: "successStory",
-        element: <SuccessStory></SuccessStory>,
+        element: <SuccessStory />,
+      },
+      {
+        path: "manageBlogs",
+        element: <ManageBlogs />,
+      },
+      {
+        path: "createBlog",
+        element: <CreateBlogPage />,
       },
 
-      // regular user routes
+
+
+      //! regular user routes
       {
         path: "editBiodata",
-        element: <EditBiodata></EditBiodata>,
+        element: <EditBiodata />,
       },
 
       {
         path: "viewBiodata",
-        element: <ViewBiodata></ViewBiodata>,
+        element: <ViewBiodata />,
       },
       {
         path: "contactRequest",
-        element: <ContactRequest></ContactRequest>,
+        element: <ContactRequest />,
       },
 
       {
@@ -139,11 +164,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "favoriteBiodata",
-        element: <FavoriteBiodata></FavoriteBiodata>,
+        element: <FavoriteBiodata />,
       },
       {
         path: "gotMarried",
-        element: <GotMarried></GotMarried>,
+        element: <GotMarried />,
       },
     ],
   },

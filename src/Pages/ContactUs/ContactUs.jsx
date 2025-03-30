@@ -27,9 +27,9 @@ const ContactUs = () => {
         </div>
       </div>
       <div>
-        <div className="w-[90%] mx-auto my-12 shadow-xl shadow-gray-600">
+        <div className="w-[90%] mx-auto my-12 shadow-xl shadow-gray-600 rounded-lg">
           <iframe
-            className="mx-auto"
+            className="mx-auto rounded-lg"
             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14594.414332759932!2d90.38193637141114!3d23.868206518896525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1716409103887!5m2!1sen!2sbd"
             width="100%"
             height="300"
@@ -68,7 +68,8 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1  border-2  p-8">
+        <div className="flex-1  border-2  p-8 rounded-lg">
+          <h2 className="mb-4 text-center text-2xl font-bold text-gray-700">Write to us</h2>
           <ContactForm/>
         </div>
       </div>

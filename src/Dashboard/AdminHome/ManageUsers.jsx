@@ -106,7 +106,7 @@ const ManageUsers = () => {
                     ) : (
                       <button
                         onClick={() => handleMakePremium(user)}
-                        className="bg-[#f39c12] text-white p-2 rounded-lg uppercase"
+                        className="bg-[#f39c12] text-white p-2 rounded-md uppercase"
                       >
                         Regular
                       </button>

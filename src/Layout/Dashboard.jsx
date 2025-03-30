@@ -95,6 +95,17 @@ const Dashboard = () => {
                   Success Story
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/dashboard/manageBlogs"
+                  className={({ isActive }) => 
+                    `block p-2 rounded ${isActive ? "bg-[#a9106b] text-white" : "text-gray-700 hover:bg-purple-200"}`
+                  }
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  Manage Blogs
+                </NavLink>
+              </li>
             </ul>
           </>
         ) : (
@@ -160,16 +171,11 @@ const Dashboard = () => {
           </>
         )}
 
-        <button 
-          onClick={handleLogout} 
-          className="bg-[#a9106b] text-white p-2 rounded mt-4 hover:bg-[#8a0d5a]"
-        >
-          Logout
-        </button>
+        
         
         <hr className="my-4 border-gray-400" />
         
-        <ul className="flex flex-col gap-4 px-4">
+        <ul className="flex flex-col gap-2 px-4">
           <li>
             <NavLink 
               to="/" 
@@ -178,6 +184,14 @@ const Dashboard = () => {
             >
               Home
             </NavLink>
+          </li>
+          <li>
+          <button 
+          onClick={handleLogout} 
+          className="bg-[#a9106b] text-white p-2 rounded mt-4 hover:bg-[#8a0d5a]"
+        >
+          Logout
+        </button>
           </li>
         </ul>
       </div>

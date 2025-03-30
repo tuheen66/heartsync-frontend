@@ -1,4 +1,4 @@
-// import "./../AboutUsCss/AboutUs.css";
+
 import bannerImg from "./../../assets/images/about.jpg";
 import { Helmet } from "react-helmet-async";
 import team from "../../assets/images/team.jpg";
@@ -47,7 +47,7 @@ const AboutUs = () => {
               </p>
             </div>
             <div className="lg:w-1/2 h-64 md:h-80 bg-gray-200 rounded-lg flex items-center justify-center">
-              <img src={team} alt="Team" />
+              <img className="rounded-lg" src={team} alt="Team" />
             </div>
           </div>
         </section>
@@ -56,7 +56,7 @@ const AboutUs = () => {
         <section className="px-[5%] mb-8 py-8">
           <div className="flex flex-col lg:flex-row gap-8 items-center">
             <div className="lg:w-1/2 order-2 lg:order-1 h-64 md:h-80  flex items-center justify-center md:mt-12">
-              <img src={mission} alt="Team" />
+              <img className="rounded-lg" src={mission} alt="Team" />
             </div>
             <div className="lg:w-1/2 order-1 lg:order-2">
               <h2 className="text-3xl font-bold text-gray-800 mb-6">
@@ -83,7 +83,7 @@ const AboutUs = () => {
             Why Choose Heartsync?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6  shadow-md hover:shadow-lg transition-shadow">
+            <div className="bg-white p-6  shadow-md hover:shadow-lg transition-shadow rounded-lg">
               <h3 className="text-xl font-semibold text-[#a9106b] mb-3">
                 Personalized Matchmaking
               </h3>
@@ -94,7 +94,7 @@ const AboutUs = () => {
                 and we tailor our services to meet your specific needs.
               </p>
             </div>
-            <div className="bg-white p-6  shadow-md hover:shadow-lg transition-shadow">
+            <div className="bg-white p-6  shadow-md hover:shadow-lg transition-shadow rounded-lg">
               <h3 className="text-xl font-semibold text-[#a9106b] mb-3">
                 Verified Profiles
               </h3>
@@ -106,7 +106,7 @@ const AboutUs = () => {
                 find love.
               </p>
             </div>
-            <div className="bg-white p-6  shadow-md hover:shadow-lg transition-shadow">
+            <div className="bg-white p-6  shadow-md hover:shadow-lg transition-shadow rounded-lg">
               <h3 className="text-xl font-semibold text-[#a9106b] mb-3">
                 Cultural Diversity
               </h3>
@@ -118,7 +118,7 @@ const AboutUs = () => {
                 boundaries.
               </p>
             </div>
-            <div className="bg-white p-6  shadow-md hover:shadow-lg transition-shadow">
+            <div className="bg-white p-6  shadow-md hover:shadow-lg transition-shadow rounded-lg">
               <h3 className="text-xl font-semibold text-[#a9106b] mb-3">
                 User-Friendly Experience
               </h3>
@@ -223,7 +223,7 @@ const AboutUs = () => {
               </ul>
             </div>
             <div className="lg:w-1/2 h-64 md:h-80  flex items-center justify-center md:mt-12">
-              <img src={values} alt="Team" />
+              <img className="rounded-lg" src={values} alt="Team" />
             </div>
           </div>
         </section>
@@ -235,7 +235,7 @@ const AboutUs = () => {
           </h2>
           <div className="flex flex-col lg:flex-row gap-8 items-center">
             <div className="lg:w-1/2 h-64 md:h-80  flex items-center justify-center md:mb-12 mt-8 md:mt-20 lg:mt-0">
-              <img src={process} alt="Team" />
+              <img className="rounded-lg" src={process} alt="Team" />
             </div>
             <div className="lg:w-1/2">
               <div className="space-y-6">

@@ -10,7 +10,7 @@ const HowItWorks = () => {
           Simple steps to find your perfect match
         </p>
       </div>
-      <div className="flex flex-col md:flex-row items-stretch gap-8">
+      <div className="flex flex-col lg:flex-row items-stretch gap-8">
         <div className="flex-1">
           <Accordion collapseAll className="space-y-2">
             {[
@@ -78,9 +78,9 @@ const HowItWorks = () => {
             ))}
           </Accordion>
         </div>
-        <div className="flex-1 flex items-center ">
+        <div className="flex-1 flex items-center object-cover rounded-lg ">
           <img 
-            className="w-full h-auto max-h-[500px] object-scale-down " 
+            className="w-full h-auto max-h-[500px]  rounded-lg" 
             src={image1} 
             alt="How it works illustration" 
           />

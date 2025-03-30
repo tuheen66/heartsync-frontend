@@ -59,7 +59,7 @@ const SuccessStory = () => {
                 <td className="px-6 py-4">
                   <button
                     onClick={() => handleStory(item.message)}
-                    className="py-2 px-4 rounded-none border-none bg-[#a9106b] hover:bg-[#30336b] text-white"
+                    className="py-2 px-4 border-none rounded-md bg-[#a9106b] hover:bg-[#30336b] text-white"
                   >
                     View Story
                   </button>

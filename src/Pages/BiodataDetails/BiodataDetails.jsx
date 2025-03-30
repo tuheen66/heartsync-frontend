@@ -103,13 +103,13 @@ const BiodataDetails = () => {
         <title>Heartsync | Detail Biodata</title>
       </Helmet>
 
-      <div className="w-[70%] mx-auto bg-white  shadow-sm border border-gray-200 overflow-hidden my-4 sm:my-6 md:my-8">
-        {/* Header Section - Stacked on mobile, row on sm+ */}
+      <div className="w-[70%] mx-auto bg-white  shadow-sm border border-gray-200 overflow-hidden my-4 sm:my-6 md:my-8 rounded-lg">
+        
         <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-          {/* Profile Image - Smaller on mobile */}
-          <div className="w-32 h-32  md:w-40 md:h-40 lg:w-64 lg:h-64 border-4 border-white shadow-sm overflow-hidden">
+        
+          <div className="w-32 h-32  md:w-40 md:h-40 lg:w-64 lg:h-64 border-4 border-white shadow-sm overflow-hidden rounded-lg">
             <img
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-lg"
               src={biodata.photo}
               alt={biodata.name}
             />

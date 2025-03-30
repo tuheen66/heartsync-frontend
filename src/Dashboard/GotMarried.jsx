@@ -66,7 +66,7 @@ const GotMarried = () => {
               type="text"
               id="biodataId"
               name="biodataId"
-              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent rounded-md"
               placeholder="Enter your biodata ID"
               required
             />
@@ -83,7 +83,7 @@ const GotMarried = () => {
               type="text"
               id="sp_biodataId"
               name="sp_biodataId"
-              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent rounded-md"
               placeholder="Enter spouse's biodata ID"
               required
             />
@@ -102,7 +102,7 @@ const GotMarried = () => {
               type="text"
               id="photo"
               name="photo"
-              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent rounded-md"
               placeholder="Paste your photo link"
               required
             />
@@ -119,7 +119,7 @@ const GotMarried = () => {
               type="text"
               id="sp_photo"
               name="sp_photo"
-              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700 focus:border-transparent rounded-md"
               placeholder="Paste spouse's photo link"
               required
             />
@@ -137,7 +137,7 @@ const GotMarried = () => {
             id="message"
             rows="4"
             name="message"
-            className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-pink-700focus:border-transparent rounded-md"
             placeholder="Share your experience..."
           ></textarea>
         </div>
@@ -146,7 +146,7 @@ const GotMarried = () => {
           <div className="w-full md:w-auto">
             <button
               type="submit"
-              className="w-full px-6 py-2 bg-[#a9106b] text-white font-medium  hover:bg-pink-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="w-full px-6 py-2 bg-[#a9106b] text-white font-medium  hover:bg-pink-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md"
             >
               Submit Review
             </button>
@@ -165,7 +165,7 @@ const GotMarried = () => {
               name="rating"
               min="1"
               max="5"
-              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent rounded-md"
               required
               placeholder="1-5"
             />

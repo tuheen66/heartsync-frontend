@@ -90,7 +90,7 @@ const FavoriteBiodata = () => {
                   <td className="px-6 py-4 text-center">
                     <button
                       onClick={() => handleDelete(item._id)}
-                      className="bg-[#a9106b] text-white px-2 py-2"
+                      className="bg-[#a9106b] text-white px-2 py-2 rounded-md"
                     >
                       Delete
                     </button>

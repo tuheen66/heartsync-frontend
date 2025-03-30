@@ -6,6 +6,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import "flowbite";
 import { initFlowbite } from "flowbite";
+import MegaMenu from "./Megamenu";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -33,12 +34,14 @@ const Navbar = () => {
   return (
     <div className="about lg:sticky lg:top-0 lg:z-10">
       <div className="flex flex-col gap-4 lg:gap-4 lg:flex-row justify-between items-center  mx-auto bg-slate-100  pb-8 lg:pb-0  px-[5%] ">
-        <div className="flex items-center">
-          <img className="w-16 py-2" src={logo} alt="" />
-          <h1 className="font-bold text-2xl">
-            <span className="text-[#a9106b]">Heartsync</span>{" "}
-          </h1>
-        </div>
+        <Link to="/">
+          <div className="flex items-center">
+            <img className="w-16 py-2" src={logo} alt="" />
+            <h1 className="font-bold text-2xl">
+              <span className="text-[#a9106b]">Heartsync</span>{" "}
+            </h1>
+          </div>
+        </Link>
         <div>
           <div className="flex flex-wrap font-semibold text-gray-700 justify-between items-center gap-2 md:gap-8">
             <NavLink
@@ -73,6 +76,26 @@ const Navbar = () => {
             >
               Biodatas
             </NavLink>
+
+            <NavLink
+              to="/blogs"
+              style={({ isActive, isTransitioning }) => ({
+                fontWeight: isActive ? "bold" : "",
+                color: "#374177",
+                padding: "2px 6px",
+                // Replace textDecoration with border-bottom for better control
+                borderBottom: isActive ? "2px solid #a9106b" : "none",
+                paddingBottom: isActive ? "4px" : "0", // Space between text and underline
+                marginBottom: isActive ? "-2px" : "0", // Compensate for the added space
+                viewTransitionName: isTransitioning ? "slide" : "",
+                display: "inline-block", // Needed for proper border-bottom spacing
+              })}
+            >
+              Blogs
+            </NavLink>
+
+            <MegaMenu/>
+
             <NavLink
               to="/aboutUs"
               style={({ isActive, isTransitioning }) => ({
@@ -121,7 +144,7 @@ const Navbar = () => {
             {!user ? (
               <div>
                 <Link to="/login">
-                  <button className="px-4 py-2 border-none rounded-none mr-2 bg-[#a9106b] hover:bg-[#30336b] text-white">
+                  <button className="px-4 py-2 border-none rounded-md mr-2 bg-[#a9106b] hover:bg-[#30336b] text-white">
                     Login
                   </button>
                 </Link>

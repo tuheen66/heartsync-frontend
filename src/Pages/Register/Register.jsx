@@ -88,7 +88,7 @@ const Register = () => {
                 Your name:
               </label>
               <input
-                className=" py-2 px-4 w-full mb-2  border border-gray-300"
+                className=" py-2 px-4 w-full mb-2  border border-gray-300 rounded-md"
                 type="text"
                 name="name"
                 id="name"
@@ -100,7 +100,7 @@ const Register = () => {
                 Photo URL:
               </label>
               <input
-                className=" py-2 px-4 w-full mb-2  border border-gray-300"
+                className=" py-2 px-4 w-full mb-2  border border-gray-300 rounded-md"
                 type="text"
                 name="photo"
                 id="photo"
@@ -112,7 +112,7 @@ const Register = () => {
                 Your email:
               </label>
               <input
-                className=" py-2 px-4 w-full mb-2  border border-gray-300"
+                className=" py-2 px-4 w-full mb-2  border border-gray-300 rounded-md"
                 type="email"
                 name="email"
                 id="email"
@@ -124,7 +124,7 @@ const Register = () => {
                 Password:
               </label>
               <input
-                className=" py-2 px-4 w-full mb-2  border border-gray-300"
+                className=" py-2 px-4 w-full mb-2  border border-gray-300 rounded-md"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
@@ -138,7 +138,7 @@ const Register = () => {
             </div>
 
             <input
-              className="btn  bg-[#a9106b] py-2 w-full border-none text-lg mt-6 text-white  hover:bg-[#30336b] "
+              className="btn  bg-[#a9106b] py-2 w-full border-none rounded-md text-lg mt-6 text-white  hover:bg-[#30336b] "
               type="submit"
               value="Register"
             />
