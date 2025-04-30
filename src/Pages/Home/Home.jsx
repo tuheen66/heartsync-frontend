@@ -90,7 +90,7 @@ const Home = () => {
         <h2 className="font-bold text-3xl text-center text-gray-700 mb-4">
           Success Story
         </h2>
-        <div className="bg-slate-100 p-4">
+        <div className=" p-4">
           <ReviewCard/>
         </div>
       </section>

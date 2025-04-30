@@ -94,8 +94,6 @@ const Navbar = () => {
               Blogs
             </NavLink>
 
-            <MegaMenu/>
-
             <NavLink
               to="/aboutUs"
               style={({ isActive, isTransitioning }) => ({

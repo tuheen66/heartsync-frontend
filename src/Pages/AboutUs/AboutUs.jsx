@@ -46,7 +46,7 @@ const AboutUs = () => {
                 matchmaking experience.
               </p>
             </div>
-            <div className="lg:w-1/2 h-64 md:h-80 bg-gray-200 rounded-lg flex items-center justify-center">
+            <div className="lg:w-1/2 h-64 md:h-80  rounded-lg flex items-center justify-center">
               <img className="rounded-lg" src={team} alt="Team" />
             </div>
           </div>
@@ -78,7 +78,7 @@ const AboutUs = () => {
         </section>
 
         {/* Why Choose Us */}
-        <section className="mb-10 px-[5%] ">
+        <section className="my-16 px-[5%] ">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
             Why Choose Heartsync?
           </h2>
@@ -229,7 +229,7 @@ const AboutUs = () => {
         </section>
 
         {/* How It Works */}
-        <section className="my-16 px-[5%] ">
+        <section className="my-20 px-[5%] ">
           <h2 className="text-3xl font-bold text-center text-gray-800  lg:mb-20">
             How It Works
           </h2>

@@ -56,7 +56,8 @@ export const router = createBrowserRouter([
       {
         path: "/biodatas",
         element: <Biodatas></Biodatas>,
-        loader: () => fetch("http://localhost:5000/biodataCount"),
+        loader: () =>
+          fetch(`${import.meta.env.VITE_BASE_API}/biodataCount`),
       },
 
       {
@@ -67,7 +68,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/biodata/${params.id}`),
+          fetch(`${import.meta.env.VITE_BASE_API}/biodata/${params.id}`),
       },
 
       {
@@ -78,7 +79,7 @@ export const router = createBrowserRouter([
         path: "/blog-detail/:id",
         element: <BlogDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/blogs/${params.id}`),
+          fetch(`${import.meta.env.VITE_BASE_API}/blogs/${params.id}`),
       },
     ],
   },
@@ -135,8 +136,6 @@ export const router = createBrowserRouter([
         element: <CreateBlogPage />,
       },
 
-
-
       //! regular user routes
       {
         path: "editBiodata",
@@ -160,7 +159,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/biodata/${params.id}`),
+          fetch(`${import.meta.env.VITE_BASE_API}/biodata/${params.id}`),
       },
       {
         path: "favoriteBiodata",

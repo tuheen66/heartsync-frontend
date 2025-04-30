@@ -18,7 +18,7 @@ const ReviewCard = () => {
   });
 
   return (
-    <div className="w-[90%] mx-auto">
+    <div className="w-[90%] mx-auto border rounded-xl">
       <Swiper
         navigation={true}
         loop="true"
